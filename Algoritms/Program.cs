@@ -52,6 +52,7 @@ namespace Algoritms
             catch (Exception ex)
             {
                 Console.WriteLine($"{ex}");
+
                 return;
             }
 
@@ -105,33 +106,44 @@ namespace Algoritms
 
         static void Main(string[] args)
         {
-            //WritePrimeOrNotTest();
+            WritePrimeOrNotTest();
 
-            //WritePrimeOrNot();
+            WritePrimeOrNot();
 
-            //long w = Fibonacci.FibonacciCalculateRecursive(Convert.ToInt32(Console.ReadLine()));
+            //foreach (var item in Fibonacci.FibonacciCalculateRecursive(Convert.ToInt32(Console.ReadLine())))
+            //{
+            //    Console.WriteLine(item);
+            //}
 
-            foreach (var item in Fibonacci.FibonacciCalculateRecursive(Convert.ToInt32(Console.ReadLine())))
-            {
-                Console.WriteLine(item);
-            }
-            
-                Console.WriteLine();
+            //foreach (var item in Fibonacci.FibonacciCalculateCycle(Convert.ToInt32(Console.ReadLine())))
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            Console.WriteLine();
             
         }
     }
+
+    //  Задание 3
+    //  Реализуйте функцию вычисления числа Фибоначчи
+    //⦁	Реализовать рекурсивную версию и версию без рекурсии(через цикл);
+    //⦁	Обе реализации сделать методами отдельного класса;
+    //⦁	На вход методы должны принимать целочисленный параметр, определяющий количество элементов формируемой последовательности.
+
+
     class Fibonacci
     {
         /// <summary>
         /// Расчет ряда Фибоначчи до заданного числа рекурсивным методом
         /// </summary>
         /// <param name="n">
-        /// int задаваемое число
+        /// long задаваемое число
         /// </param>
         /// <returns>
         /// List<long> ряд Фибоначчи
         /// </returns>
-        public static List<long> FibonacciCalculateRecursive(int n)
+        public static List<long> FibonacciCalculateRecursive(long n)
         {
             List<long> listFibonacci = new List<long>();
 
@@ -149,7 +161,7 @@ namespace Algoritms
             {                
                 listFibonacci.AddRange(FibonacciCalculateRecursive(n - 1));
 
-                listFibonacci.Add(FibonacciCalculateRecursive(n - 1).Last<long>() + FibonacciCalculateRecursive(n - 2).Last<long>());
+                listFibonacci.Add(listFibonacci.Last<long>() + listFibonacci.SkipLast(1).Last<long>());
             }
             return listFibonacci;
         }
@@ -166,6 +178,7 @@ namespace Algoritms
         public static long[] FibonacciCalculateCycle(int n)
         {
             long[] rowFibonacci = new long[n];
+
             if (n == 1)
             {
                 rowFibonacci[0] = 0;
@@ -173,12 +186,15 @@ namespace Algoritms
             else if (n == 2)
             {
                 rowFibonacci[0] = 0;
+
                 rowFibonacci[1] = 1;
             }
             if (n >= 3)
             {
                 rowFibonacci[0] = 0;
+
                 rowFibonacci[1] = 1;
+
                 for (int i = 2; i < n; i++)
                 {
                     rowFibonacci[i] = rowFibonacci[i - 1] + rowFibonacci[i - 2];
