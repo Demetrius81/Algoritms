@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Fibonacci\Fibonacci.csproj" />
+    <ProjectReference Include="..\PrimeNumber\PrimeNumber.csproj" />
   </ItemGroup>
 
 </Project>
