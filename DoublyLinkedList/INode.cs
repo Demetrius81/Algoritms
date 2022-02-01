@@ -1,63 +1,48 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace DoublyLinkedList
+namespace Node
+
 {
-    public class DoublyLinkedList : ILinkedList
+    public interface INode
     {
         /// <summary>
         /// Возвращает количество элементов в списке
         /// </summary>
         /// <returns></returns>
-        public int GetCount()
-        {
-            return 0;
-        }
+        int GetCount();
 
         /// <summary>
         /// Добавляет новый элемент списка
         /// </summary>
         /// <param name="value"></param>
-        public void AddNode(int value)
-        {
-
-        }
+        void AddNode(int value);
 
         /// <summary>
         /// Добавляет новый элементсписка после определённого элемента
         /// </summary>
         /// <param name="node"></param>
         /// <param name="value"></param>
-        public void AddNodeAfter(DoublyLinkedList node, int value)
-        {
-
-        }
+        void AddNodeAfter(Node node, int value);
 
         /// <summary>
         /// Удаляет элемент по порядковому номеру
         /// </summary>
         /// <param name="index"></param>
-        public void RemoveNode(int index)
-        {
-
-        }
+        void RemoveNode(int index);
 
         /// <summary>
         /// Удаляет указанный элемент
         /// </summary>
         /// <param name="node"></param>
-        public void RemoveNode(DoublyLinkedList node)
-        {
-
-        }
+        void RemoveNode(Node node);
 
         /// <summary>
         /// Ищет элемент по его значению
         /// </summary>
         /// <param name="searchValue"></param>
         /// <returns></returns>
-        public DoublyLinkedList FindNode(int searchValue)
-        {
-            return null;
-        }
+        Node FindNode(int searchValue);
     }
 }
