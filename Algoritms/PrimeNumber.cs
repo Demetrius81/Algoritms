@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace PrimeNumber
+namespace Algoritms
 {
-    public class PrimeNumber
+    internal class PrimeNumber
     {
         //  Задание 1
         //  Требуется реализовать на C# функцию согласно блок-схеме. Блок-схема описывает алгоритм проверки, простое число или нет.
@@ -37,7 +39,7 @@ namespace PrimeNumber
         /// <summary>
         /// Метод запрашивает у пользователя число и выводит в консоль является ли это число простым.
         /// </summary>
-        public static void WritePrimeOrNot()
+        internal static void WritePrimeOrNot()
         {
             long number = 0;
 
@@ -69,7 +71,7 @@ namespace PrimeNumber
         /// <summary>
         /// Тестовый метод
         /// </summary>
-        public static void WritePrimeOrNotTest()
+        internal static void WritePrimeOrNotTest()
         {
             long number = 7;
 

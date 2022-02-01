@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Linq;
 
-namespace Fibonacci
+namespace Algoritms
 {
     //  Задание 3
     //  Реализуйте функцию вычисления числа Фибоначчи
@@ -10,7 +11,7 @@ namespace Fibonacci
     //⦁	Обе реализации сделать методами отдельного класса;
     //⦁	На вход методы должны принимать целочисленный параметр, определяющий количество элементов формируемой последовательности.
 
-    public class Fibonacci
+    internal class Fibonacci
     {
         /// <summary>
         /// Расчет ряда Фибоначчи до заданного числа рекурсивным методом
@@ -21,7 +22,7 @@ namespace Fibonacci
         /// <returns>
         /// List<long> ряд Фибоначчи
         /// </returns>
-        public static List<long> FibonacciCalculateRecursive(long n)
+        internal static List<long> FibonacciCalculateRecursive(long n)
         {
             List<long> listFibonacci = new List<long>();
 
@@ -53,7 +54,7 @@ namespace Fibonacci
         /// <returns>
         /// long[] ряд Фибоначчи
         /// </returns>
-        public static long[] FibonacciCalculateCycle(int n)
+        internal static long[] FibonacciCalculateCycle(int n)
         {
             long[] rowFibonacci = new long[n];
 
