@@ -36,6 +36,10 @@ namespace Algoritms
         /// </summary>
         internal Node PrevNode { get => _prevNode; set => _prevNode = value; }
 
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="value"></param>
         public Node(int value)
         {
             Value = value;

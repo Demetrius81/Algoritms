@@ -68,7 +68,7 @@ namespace Algoritms
             else
             {
                 Node currentNode = LastNode;
-                
+
                 currentNode.NextNode = newNode;
 
                 newNode.PrevNode = currentNode;
@@ -101,7 +101,7 @@ namespace Algoritms
             else
             {
                 userNode.NextNode = newNode;
-                
+
                 newNode.PrevNode = userNode;
 
                 LastNode = newNode;
@@ -114,7 +114,7 @@ namespace Algoritms
         /// Удаляет элемент по порядковому номеру
         /// </summary>
         /// <param name="index">int индекс удаляемого элемента</param>
-        public void RemoveNode(int index)//todo
+        public void RemoveNode(int index)
         {
             int temp = GetCount();
 
@@ -132,7 +132,7 @@ namespace Algoritms
 
             RemoveNode(currentNode);
         }
-        
+
         /// <summary>
         /// Удаляет указанный элемент
         /// </summary>
@@ -182,7 +182,7 @@ namespace Algoritms
                 }
 
                 currentNode = currentNode.NextNode;
-            }            
+            }
             return currentNode;
         }
 

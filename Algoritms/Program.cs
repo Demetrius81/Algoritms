@@ -22,5 +22,5 @@ namespace Algoritms
 
             Console.ReadKey();
         }
-    }    
+    }
 }
