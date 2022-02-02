@@ -82,5 +82,22 @@ namespace Algoritms
             return rowFibonacci;
         }
 
+
+        internal static void FibonacciCyclePrint()
+        {
+            foreach (var item in FibonacciCalculateCycle(Convert.ToInt32(Console.ReadLine())))
+            {
+                Console.WriteLine(item);
+            }
+        }
+
+
+        internal static void FibonacciRecursivePrint()
+        {
+            foreach (var item in FibonacciCalculateRecursive(Convert.ToInt32(Console.ReadLine())))
+            {
+                Console.WriteLine(item);
+            }
+        }
     }
 }

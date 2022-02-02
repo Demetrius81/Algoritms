@@ -125,7 +125,7 @@ namespace Algoritms
                 index = temp;
             }
 
-            for (int i = 0; i < index; i++)
+            for (int i = 1; i < index; i++)
             {
                 currentNode = currentNode.NextNode;
             }
@@ -137,7 +137,7 @@ namespace Algoritms
         /// Удаляет указанный элемент
         /// </summary>
         /// <param name="node">Node элемент списка, который нужно удалить</param>
-        public void RemoveNode(Node userNode)//todo
+        public void RemoveNode(Node userNode)
         {
             Node prevNode = userNode.PrevNode;
 
@@ -201,6 +201,52 @@ namespace Algoritms
 
                 currentNode = currentNode.NextNode;
             }
+            Console.WriteLine();
+        }
+
+        /// <summary>
+        /// Метод выводит в консоль результаты работы методов класса DoubleLinkedList.
+        /// </summary>
+        internal static void DoubleLinkedListResults()
+        {
+            DoubleLinkedList list = new DoubleLinkedList();
+
+            for (int i = 0; i < 10; i++)
+            {
+                list.AddNode((i + 1) * 10);
+            }
+            Console.WriteLine($"Вновь созданный список");
+
+            list.PrintDoubleLinkedList();
+
+            int a = 50;
+
+            int b = 999;
+
+            int index = 8;
+
+            list.AddNodeAfter(list.FindNode(a), b);
+
+            Console.WriteLine($"Список после добавления элемента со значением {b} после элемента со значением {a}");
+
+            list.PrintDoubleLinkedList();
+
+            Console.WriteLine();
+
+            list.RemoveNode(list.FindNode(50));
+
+            Console.WriteLine($"Список после удаления элемента со значением {b}");
+
+            list.PrintDoubleLinkedList();
+
+            Console.WriteLine();
+
+            list.RemoveNode(index);
+
+            Console.WriteLine($"Список после удаления элемента с индексом {index}");
+
+            list.PrintDoubleLinkedList();
+
             Console.WriteLine();
         }
     }
