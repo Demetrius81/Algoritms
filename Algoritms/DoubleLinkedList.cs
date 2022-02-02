@@ -36,18 +36,24 @@ namespace Algoritms
         /// <returns>int количество элементов списка</returns>
         public int GetCount()
         {
-            Node currentNode = FirstNode;
-
             int i = 1;
 
-            do
+            if (FirstNode == LastNode)
             {
-                i++;
+                return i;
+            }
+            else
+            {
+                Node currentNode = FirstNode;
 
-                currentNode = currentNode.NextNode;
+                do
+                {
+                    i++;
 
-            } while (currentNode.NextNode != null);
+                    currentNode = currentNode.NextNode;
 
+                } while (currentNode.NextNode != null);
+            }
             return i;
         }
 
@@ -122,7 +128,7 @@ namespace Algoritms
 
             if (temp < index)
             {
-                index = temp;
+                return;
             }
 
             for (int i = 1; i < index; i++)
