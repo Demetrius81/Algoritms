@@ -85,6 +85,8 @@ namespace Algoritms
 
         internal static void FibonacciCyclePrint()
         {
+            Console.WriteLine("Введите длинну ряда чисел Фибоначчи");
+
             foreach (var item in FibonacciCalculateCycle(Convert.ToInt32(Console.ReadLine())))
             {
                 Console.WriteLine(item);
@@ -94,6 +96,8 @@ namespace Algoritms
 
         internal static void FibonacciRecursivePrint()
         {
+            Console.WriteLine("Введите длинну ряда чисел Фибоначчи");
+
             foreach (var item in FibonacciCalculateRecursive(Convert.ToInt32(Console.ReadLine())))
             {
                 Console.WriteLine(item);

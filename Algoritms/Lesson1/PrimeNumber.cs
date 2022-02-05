@@ -37,6 +37,36 @@ namespace Algoritms
         }
 
         /// <summary>
+        /// Метод определяет простое число или нет. На вход подается переменная long. Результатом работы метода является переменная bool. 
+        /// </summary>
+        /// <param name="number">Исследуемое число</param>
+        /// <returns bool>Результат работы</returns>
+        private static bool CheckPrimeOrNotUpgrade(long number)
+        {
+            int d = 0;
+
+            if (number == 2)
+            {
+                return true;
+            }
+
+            for (int i = 2; i < number; i++)
+            {
+                if (number % i == 0)
+                {
+                    d++;
+
+                    return false;
+                }
+            }
+            if (d == 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
         /// Метод запрашивает у пользователя число и выводит в консоль является ли это число простым.
         /// </summary>
         internal static void WritePrimeOrNot()
