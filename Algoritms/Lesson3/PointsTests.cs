@@ -4,14 +4,41 @@ using System.Text;
 
 namespace Algoritms
 {
-    internal class PointsTests
+    internal class PointsTests : ITask
     {
+        private string _taskNumber = "1_2";
+
+        public string TaskNumber { get => _taskNumber; }
+
+        private string _taskName = "Работа с замерами времени вычислений";
+
+        public string TaskName { get => _taskName; }
+
+        public void TaskResultOutput()
+        {
+            PrintHead();
+
+            Test(100000);
+
+            Test(200000);
+
+            Test(500000);
+
+            Test(1000000);
+
+            Test(10000000);
+
+            Test(100000000);
+
+            Console.ReadKey();
+        }
+
         /// <summary>
         /// Заполняет массив точек класса случайными числами
         /// </summary>
         /// <param name="count">int длина массива</param>
         /// <returns>PointDoubleCla[] заполненный массив</returns>
-        private static PointDoubleClass[] PointsArrayCla(int count)
+        private PointDoubleClass[] PointsArrayCla(int count)
         {
             PointDoubleClass[] points = new PointDoubleClass[count];
 
@@ -33,7 +60,7 @@ namespace Algoritms
         /// </summary>
         /// <param name="count">int длина массива</param>
         /// <returns>PointDoubleStr[] заполненный массив</returns>
-        private static PointDoubleStructure[] PointsArrayStr(int count)
+        private PointDoubleStructure[] PointsArrayStr(int count)
         {
             PointDoubleStructure[] points = new PointDoubleStructure[count];
 
@@ -51,7 +78,7 @@ namespace Algoritms
         /// <summary>
         /// Шапка таблицы
         /// </summary>
-        public static void PrintHead()
+        private void PrintHead()
         {
             Console.Clear();
 
@@ -69,7 +96,7 @@ namespace Algoritms
         /// <param name="timeStruct">double время расчета для структуры</param>
         /// <param name="timeClass">double время расчета для класса</param>
         /// <param name="Ratio">отношение времени расчета</param>
-        public static void PrintResults(int numC, double timeStruct, double timeClass, double Ratio)
+        private void PrintResults(int numC, double timeStruct, double timeClass, double Ratio)
         {
             Console.SetCursorPosition(0, Console.CursorTop);
 
@@ -113,26 +140,8 @@ namespace Algoritms
         /// <summary>
         /// Тест структуры и класса
         /// </summary>
-        public static void TestResults()
-        {
-            PrintHead();
 
-            Test(100000);
-
-            Test(200000);
-
-            Test(500000);
-
-            Test(1000000);
-
-            Test(10000000);
-
-            Test(100000000);
-
-            Console.ReadKey();
-        }
-
-        private static void Test(int num)
+        private void Test(int num)
         {
             StopWatch swClass = new StopWatch();
 
@@ -164,7 +173,7 @@ namespace Algoritms
         /// </summary>
         /// <param name="points">PointDoubleCla[] массив точек</param>
         /// <returns>int количество итераций</returns>
-        public static int CalculatePointsDistance(PointDoubleClass[] points)
+        public int CalculatePointsDistance(PointDoubleClass[] points)
         {
             int i;
 
@@ -184,7 +193,7 @@ namespace Algoritms
         /// </summary>
         /// <param name="points">PointDoubleStr[] массив точек</param>
         /// <returns>int количество итераций</returns>
-        public static int CalculatePointsDistance(PointDoubleStructure[] points)
+        public int CalculatePointsDistance(PointDoubleStructure[] points)
         {
             int i;
 

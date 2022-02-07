@@ -30,13 +30,13 @@ namespace Algoritms
             {
                 Console.Clear();
 
-                Console.WriteLine($"Введите номер задачи(с 1 по 6) или 0 для выхода");
+                Console.WriteLine($"Введите номер задачи(с 1 по 4) или 0 для выхода");
 
                 int taskNumber = 0;
 
                 bool isOK = Int32.TryParse(Console.ReadLine(), out taskNumber);
 
-                if (!isOK || taskNumber < 0 || taskNumber > 6)
+                if (!isOK || taskNumber < 0 || taskNumber > 4)
                 {
                     Console.WriteLine("Вы ввели некорректное значение");
 
@@ -50,7 +50,9 @@ namespace Algoritms
                         }
                     case 1:
                         {
-                            PrimeNumber.WritePrimeOrNotTest();
+                            PrimeNumber temp = new PrimeNumber();
+
+                            temp.TaskResultOutput();
 
                             PressToExit();
 
@@ -58,7 +60,9 @@ namespace Algoritms
                         }
                     case 2:
                         {
-                            PrimeNumber.WritePrimeOrNot();
+                            Fibonacci temp = new Fibonacci();
+
+                            temp.TaskResultOutput();
 
                             PressToExit();
 
@@ -66,7 +70,9 @@ namespace Algoritms
                         }
                     case 3:
                         {
-                            Fibonacci.FibonacciCyclePrint();
+                            DoubleLinkedList temp = new DoubleLinkedList();
+
+                            temp.TaskResultOutput();
 
                             PressToExit();
 
@@ -74,7 +80,9 @@ namespace Algoritms
                         }
                     case 4:
                         {
-                            Fibonacci.FibonacciRecursivePrint();
+                            PointsTests temp = new PointsTests();
+
+                            temp.TaskResultOutput();
 
                             PressToExit();
 
@@ -82,21 +90,12 @@ namespace Algoritms
                         }
                     case 5:
                         {
-                            DoubleLinkedList.DoubleLinkedListResults();
-
-                            PressToExit();
-
                             break;
                         }
                     case 6:
                         {
-                            PointsTests.TestResults();
-
-                            PressToExit();
-
                             break;
                         }
-
                     default:
                         {
                             break;

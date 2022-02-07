@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Algoritms
 {
-    internal class PrimeNumber
+    internal class PrimeNumber : ITask
     {
         //  Задание 1
         //  Требуется реализовать на C# функцию согласно блок-схеме. Блок-схема описывает алгоритм проверки, простое число или нет.
@@ -13,12 +13,53 @@ namespace Algoritms
         //⦁	Написать проверочный код(один положительный, один отрицательный сценарий) в отдельной функции и вызывать его при запуске.
         //⦁	Код выложить на GitHub.
 
+        private string _taskNumber = "1_1";
+
+        public string TaskNumber { get => _taskNumber; }
+
+        private string _taskName = "Проверка является ли число простым";
+
+        public string TaskName { get => _taskName; }
+
+        public void TaskResultOutput()
+        {
+            long number = 7;
+
+            Console.WriteLine($"Введите число >{number}");
+
+            bool isPrime = CheckPrimeOrNotUpgrade(number);
+
+            if (isPrime)
+            {
+                Console.WriteLine($"Число {number} является простым");
+            }
+            else
+            {
+                Console.WriteLine($"Число {number} не является простым");
+            }
+
+            number = 8;
+
+            Console.WriteLine($"Введите число >{number}");
+
+            isPrime = CheckPrimeOrNotUpgrade(number);
+
+            if (isPrime)
+            {
+                Console.WriteLine($"Число {number} является простым");
+            }
+            else
+            {
+                Console.WriteLine($"Число {number} не является простым");
+            }
+        }
+
         /// <summary>
         /// Метод определяет простое число или нет. На вход подается переменная long. Результатом работы метода является переменная bool. 
         /// </summary>
         /// <param name="number">Исследуемое число</param>
         /// <returns bool>Результат работы</returns>
-        private static bool CheckPrimeOrNot(long number)
+        private bool CheckPrimeOrNot(long number)
         {
             int d = 0;
 
@@ -41,7 +82,7 @@ namespace Algoritms
         /// </summary>
         /// <param name="number">Исследуемое число</param>
         /// <returns bool>Результат работы</returns>
-        private static bool CheckPrimeOrNotUpgrade(long number)
+        private bool CheckPrimeOrNotUpgrade(long number)
         {
             int d = 0;
 
@@ -69,7 +110,7 @@ namespace Algoritms
         /// <summary>
         /// Метод запрашивает у пользователя число и выводит в консоль является ли это число простым.
         /// </summary>
-        internal static void WritePrimeOrNot()
+        private void WritePrimeOrNot()
         {
             long number = 0;
 
@@ -87,42 +128,6 @@ namespace Algoritms
             }
 
             bool isPrime = CheckPrimeOrNot(number);
-
-            if (isPrime)
-            {
-                Console.WriteLine($"Число {number} является простым");
-            }
-            else
-            {
-                Console.WriteLine($"Число {number} не является простым");
-            }
-        }
-
-        /// <summary>
-        /// Тестовый метод
-        /// </summary>
-        internal static void WritePrimeOrNotTest()
-        {
-            long number = 7;
-
-            Console.WriteLine($"Введите число >{number}");
-
-            bool isPrime = CheckPrimeOrNot(number);
-
-            if (isPrime)
-            {
-                Console.WriteLine($"Число {number} является простым");
-            }
-            else
-            {
-                Console.WriteLine($"Число {number} не является простым");
-            }
-
-            number = 8;
-
-            Console.WriteLine($"Введите число >{number}");
-
-            isPrime = CheckPrimeOrNot(number);
 
             if (isPrime)
             {

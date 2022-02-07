@@ -11,8 +11,37 @@ namespace Algoritms
     //⦁	Обе реализации сделать методами отдельного класса;
     //⦁	На вход методы должны принимать целочисленный параметр, определяющий количество элементов формируемой последовательности.
 
-    internal class Fibonacci
+    internal class Fibonacci : ITask
     {
+        private string _taskNumber = "1_2";
+
+        public string TaskNumber { get => _taskNumber; }
+
+        private string _taskName = "Вывод ряда Фибоначчи до заданного предела";
+
+        public string TaskName { get => _taskName; }
+
+        public void TaskResultOutput()
+        {
+            Console.WriteLine("Введите длинну ряда чисел Фибоначчи");
+
+            int temp = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Ряд Фибоначчи циклическим методом:");
+
+            foreach (var item in FibonacciCalculateCycle(temp))
+            {
+                Console.WriteLine($" {item}");
+            }
+
+            Console.WriteLine("Ряд Фибоначчи рекурсивным методом:");
+
+            foreach (var item in FibonacciCalculateRecursive(temp))
+            {
+                Console.WriteLine($" {item}");
+            }
+        }
+
         /// <summary>
         /// Расчет ряда Фибоначчи до заданного числа рекурсивным методом
         /// </summary>
@@ -22,7 +51,7 @@ namespace Algoritms
         /// <returns>
         /// List<long> ряд Фибоначчи
         /// </returns>
-        internal static List<long> FibonacciCalculateRecursive(long n)
+        private List<long> FibonacciCalculateRecursive(long n)
         {
             List<long> listFibonacci = new List<long>();
 
@@ -54,7 +83,7 @@ namespace Algoritms
         /// <returns>
         /// long[] ряд Фибоначчи
         /// </returns>
-        internal static long[] FibonacciCalculateCycle(int n)
+        private long[] FibonacciCalculateCycle(int n)
         {
             long[] rowFibonacci = new long[n];
 
@@ -80,28 +109,6 @@ namespace Algoritms
                 }
             }
             return rowFibonacci;
-        }
-
-
-        internal static void FibonacciCyclePrint()
-        {
-            Console.WriteLine("Введите длинну ряда чисел Фибоначчи");
-
-            foreach (var item in FibonacciCalculateCycle(Convert.ToInt32(Console.ReadLine())))
-            {
-                Console.WriteLine(item);
-            }
-        }
-
-
-        internal static void FibonacciRecursivePrint()
-        {
-            Console.WriteLine("Введите длинну ряда чисел Фибоначчи");
-
-            foreach (var item in FibonacciCalculateRecursive(Convert.ToInt32(Console.ReadLine())))
-            {
-                Console.WriteLine(item);
-            }
         }
     }
 }
