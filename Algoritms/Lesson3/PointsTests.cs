@@ -6,7 +6,7 @@ namespace Algoritms
 {
     internal class PointsTests : ITask
     {
-        private string _taskNumber = "1_2";
+        private string _taskNumber = "3";
 
         public string TaskNumber { get => _taskNumber; }
 
