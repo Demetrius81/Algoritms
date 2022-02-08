@@ -10,6 +10,11 @@ namespace Algoritms.Lesson4
         /// Поле значение
         /// </summary>
         private int _index;
+
+        /// <summary>
+        /// Поле хранимые данные
+        /// </summary>
+        private object _data;
                 
         /// <summary>
         /// Поле ссылка на следующий элемент слева
@@ -25,6 +30,11 @@ namespace Algoritms.Lesson4
         /// Свойство поля значения
         /// </summary>
         internal int Index { get => _index; set => _index = value; }
+
+        /// <summary>
+        /// Свойство поля хранимые данные
+        /// </summary>
+        internal object Data { get => _data; set => _data = value; }
 
         /// <summary>
         /// Свойство поля ссылка на следующий элемент слева
@@ -43,6 +53,17 @@ namespace Algoritms.Lesson4
         public NodeOfTree(int value)
         {
             Index = value;
+        }
+
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="value"></param>
+        public NodeOfTree(int value, object data)
+        {
+            Index = value;
+
+            Data = data;
         }
     }
 }

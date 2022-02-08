@@ -41,14 +41,23 @@ namespace Algoritms.Lesson4
 
         public void TaskResultOutput()
         {
+            CreateDataLine(10);
 
+            PrintTreePrefixBypass();
 
+            PrintTreePostfixBypass();
+
+            PrintTreeInfixBypass();
         }
 
         private Tree CreateDataLine(int count)
         {
             Tree tree = new Tree();
 
+            for (int i = 1; i <= count; i++)
+            {
+                tree.Add(i, String.Format($"Элемент №{i}"));
+            }
 
             return tree;
         }
@@ -109,10 +118,32 @@ namespace Algoritms.Lesson4
             if (RootNode == null)
             {
                 NodeOfTree nodeOfTree = new NodeOfTree(index);
+
+                RootNode = nodeOfTree;
             }
             else
             {
                 AddTo(RootNode, index);
+            }
+            Count++;
+        }
+
+        /// <summary>
+        /// Метод добавляет элемент дерева по тндексу
+        /// </summary>
+        /// <param name="index">int индекс элемента</param>
+        /// <param name="data">object хранимые данные</param>
+        private void Add(int index, object data)
+        {
+            if (RootNode == null)
+            {
+                NodeOfTree nodeOfTree = new NodeOfTree(index, data);
+
+                RootNode = nodeOfTree;
+            }
+            else
+            {
+                AddTo(RootNode, index, data);
             }
             Count++;
         }
@@ -144,6 +175,38 @@ namespace Algoritms.Lesson4
                 else
                 {
                     AddTo(node.RightNode, index);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Метод добавляет элемент дерева рекурсивным способом
+        /// </summary>
+        /// <param name="node">NodeOfTree узел дерева</param>
+        /// <param name="index">int индекс элемента</param>
+        /// <param name="data">object хранимые данные</param>
+        private void AddTo(NodeOfTree node, int index, object data)
+        {
+            if (index < node.Index)
+            {
+                if (node.LeftNode == null)
+                {
+                    node.LeftNode = new NodeOfTree(index, data);
+                }
+                else
+                {
+                    AddTo(node.LeftNode, index, data);
+                }
+            }
+            else
+            {
+                if (node.RightNode == null)
+                {
+                    node.RightNode = new NodeOfTree(index, data);
+                }
+                else
+                {
+                    AddTo(node.RightNode, index, data);
                 }
             }
         }
@@ -284,5 +347,85 @@ namespace Algoritms.Lesson4
             }
             return true;
         }
+
+
+        private void PrintTreePrefixBypass()
+        {
+            Console.Clear();
+
+            PrintTreePrefixBypass(RootNode, "");
+
+            Console.ReadKey();
+        }
+
+        private void PrintTreePrefixBypass(NodeOfTree node, string temp)
+        {
+            if (node!=null)
+            {
+                temp = String.Format(temp + "/t");
+
+                Console.WriteLine(String.Format($"{temp}{node.Index}/t{node.Data}"));
+
+                PrintTreePrefixBypass(node.LeftNode, temp);
+
+                PrintTreePrefixBypass(node.RightNode, temp);
+            }
+        }
+
+        private void PrintTreePostfixBypass()
+        {
+            Console.Clear();
+
+            PrintTreePostfixBypass(RootNode, "");
+
+            Console.ReadKey();
+        }
+
+        private void PrintTreePostfixBypass(NodeOfTree node, string temp)
+        {
+            if (node != null)
+            {
+                temp = String.Format(temp + "/t");
+
+                PrintTreePrefixBypass(node.LeftNode, temp);
+
+                PrintTreePrefixBypass(node.RightNode, temp);
+
+                Console.WriteLine(String.Format($"{temp}{node.Index}/t{node.Data}"));
+            }
+        }
+
+        private void PrintTreeInfixBypass()
+        {
+            Console.Clear();
+
+            PrintTreeInfixBypass(RootNode, "");
+
+            Console.ReadKey();
+        }
+
+        private void PrintTreeInfixBypass(NodeOfTree node, string temp)
+        {
+            if (node != null)
+            {
+                temp = String.Format(temp + "/t");
+
+                PrintTreePrefixBypass(node.LeftNode, temp);
+
+                Console.WriteLine(string.Format($"{temp}{node.Index}/t{node.Data}"));
+
+                PrintTreePrefixBypass(node.RightNode, temp);
+            }
+        }
+
+
+
+
+
+
+
+
+
+
     }
 }

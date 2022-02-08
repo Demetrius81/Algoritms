@@ -30,13 +30,13 @@ namespace Algoritms
             {
                 Console.Clear();
 
-                Console.WriteLine($"Введите номер задачи(с 1 по 4) или 0 для выхода");
+                Console.WriteLine($"Введите номер задачи(с 1 по 5) или 0 для выхода");
 
                 int taskNumber = 0;
 
                 bool isOK = Int32.TryParse(Console.ReadLine(), out taskNumber);
 
-                if (!isOK || taskNumber < 0 || taskNumber > 4)
+                if (!isOK || taskNumber < 0 || taskNumber > 5)
                 {
                     Console.WriteLine("Вы ввели некорректное значение");
 
@@ -50,7 +50,7 @@ namespace Algoritms
                         }
                     case 1:
                         {
-                            PrimeNumber temp = new PrimeNumber();
+                            Lesson1.PrimeNumber temp = new Lesson1.PrimeNumber();
 
                             temp.TaskResultOutput();
 
@@ -60,7 +60,7 @@ namespace Algoritms
                         }
                     case 2:
                         {
-                            Fibonacci temp = new Fibonacci();
+                            Lesson1.Fibonacci temp = new Lesson1.Fibonacci();
 
                             temp.TaskResultOutput();
 
@@ -70,7 +70,7 @@ namespace Algoritms
                         }
                     case 3:
                         {
-                            DoubleLinkedList temp = new DoubleLinkedList();
+                            Lesson2.DoubleLinkedList temp = new Lesson2.DoubleLinkedList();
 
                             temp.TaskResultOutput();
 
@@ -80,7 +80,7 @@ namespace Algoritms
                         }
                     case 4:
                         {
-                            PointsTests temp = new PointsTests();
+                            Lesson3.PointsTests temp = new Lesson3.PointsTests();
 
                             temp.TaskResultOutput();
 
@@ -90,6 +90,10 @@ namespace Algoritms
                         }
                     case 5:
                         {
+                            Lesson4.Tree tree = new Lesson4.Tree();
+
+                            tree.TaskResultOutput();
+
                             break;
                         }
                     case 6:

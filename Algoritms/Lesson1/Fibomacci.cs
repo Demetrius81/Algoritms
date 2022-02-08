@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 
-namespace Algoritms
+namespace Algoritms.Lesson1
 {
     //  Задание 3
     //  Реализуйте функцию вычисления числа Фибоначчи
