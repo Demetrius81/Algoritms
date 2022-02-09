@@ -16,15 +16,63 @@ namespace Algoritms.Lesson4
         /// </summary>
         public NodeOfTree RootNode { get => _rootNode; set => _rootNode = value; }
 
+
         /// <summary>
-        /// Метод заполняет дерево данными
+        /// Метод создает и заполняет дерево данными из внешнего источника
         /// </summary>
-        /// <param name="count">int количество элементов в дереве</param>
-        public void CreateDataLine(int count)
+        /// <param name="sDict">SortedDictionary<int, object> источник данных для дерева</param>
+        public void CreateTree(SortedDictionary<int, object> sDict)
         {
-            for (int i = 1; i <= count; i++)
+            int count = sDict.Count;
+
+            int n = 0;
+
+            int nl = 0;
+
+            int nr = 0;
+
+            NodeOfTree newNode = null;
+
+            if (count == 0)
+
+                return;
+
+            else
             {
-                Add(i, String.Format($"Элемент №{i}"));
+                if (count % 2 != 0)
+                {
+                    n = count / 2 + 1;
+
+                    nl = count - n;
+
+                    nr = count - n;
+                }
+                else
+                {
+                    n = count / 2;
+
+                    nl = count - n - 1;
+
+                    nr = count - n;
+                }
+
+                newNode = new NodeOfTree(n, sDict[n]);
+
+                if (RootNode == null)
+                {
+                    RootNode = newNode;
+                }
+
+
+                for (int i = n-1; i >= 1; i--)
+                {
+                    Add(i, sDict[i]);
+                }
+
+                for (int i = count; i > n; i--)
+                {
+                    Add(i, sDict[i]);
+                }
             }
         }
 
@@ -44,9 +92,11 @@ namespace Algoritms.Lesson4
         ///// </summary>
         ///// <param name="count">int количество элементов в дереве</param>
         ///// <returns></returns>
-        //private NodeOfTree BuildTree(int count)
+        //private NodeOfTree BuildTree(SortedDictionary<int, object> sDict)
         //{
         //    NodeOfTree newNode = null;
+
+        //    int count = sDict.Count;
 
         //    if (count == 0)
         //    {
@@ -54,29 +104,8 @@ namespace Algoritms.Lesson4
         //    }
         //    else
         //    {
-        //        int n = 0;
 
-        //        int nl = 0;
 
-        //        int nr = 0;
-
-        //        if (count % 2 != 0)
-        //        {
-        //            n = count / 2 + 1;
-
-        //            nl = n - 1;
-
-        //            nr = count - n;
-        //        }
-        //        else
-        //        {
-        //            n = count / 2;
-
-        //            nl = n - 1;
-
-        //            nr = count - n;
-        //        }
-        //        newNode = new NodeOfTree(n);
 
         //        if (RootNode == null)
         //        {
@@ -240,7 +269,7 @@ namespace Algoritms.Lesson4
                 else
                 {
                     AddTo(node.LeftNode, index, data);
-                }                
+                }
             }
             else if (index > node.Index)
             {
@@ -251,7 +280,7 @@ namespace Algoritms.Lesson4
                 else
                 {
                     AddTo(node.RightNode, index, data);
-                }               
+                }
             }
             else if (index == node.Index)
             {
@@ -476,10 +505,10 @@ namespace Algoritms.Lesson4
 
 
 
-        public Dictionary<int, object> TreeToDict()
-        {
-            return TreePass(RootNode);
-        }
+        //public Dictionary<int, object> TreeToDict()
+        //{
+        //    return TreePass(RootNode);
+        //}
 
 
 
@@ -487,22 +516,22 @@ namespace Algoritms.Lesson4
 
 
 
-        private Dictionary<int, object> TreePass(NodeOfTree node)
-        {
-            Dictionary<int, object> dict = new Dictionary<int, object>();
+        //private void TreePass(NodeOfTree node, SortedDictionary<int, object> sDict)
+        //{
+        //    if (node != null)
+        //    {
+        //        TreePass(node.LeftNode, sDict);
 
-            if (node != null)
-            {
-                TreePass(node.LeftNode);
-
-                if (node.Data != null)
-                {
-                    dict.Add(node.Index, node.Data);
-                }
-                TreePass(node.RightNode);
-            }
-            return dict;
-        }
+        //        if (node.Data != null)
+        //        {
+        //            node.Index = 
+                        
+        //            node.Data
+        //        }
+        //        TreePass(node.RightNode, sDict);
+        //    }
+        //    //return dict;
+        //}
 
 
 

@@ -30,13 +30,13 @@ namespace Algoritms
             {
                 Console.Clear();
 
-                Console.WriteLine($"Введите номер задачи(с 1 по 5) или 0 для выхода");
+                Console.WriteLine($"Введите номер задачи(с 1 по 6) или 0 для выхода");
 
                 int taskNumber = 0;
 
                 bool isOK = Int32.TryParse(Console.ReadLine(), out taskNumber);
 
-                if (!isOK || taskNumber < 0 || taskNumber > 5)
+                if (!isOK || taskNumber < 0 || taskNumber > 6)
                 {
                     Console.WriteLine("Вы ввели некорректное значение");
 
@@ -98,6 +98,10 @@ namespace Algoritms
                         }
                     case 6:
                         {
+                            Lesson4.Task6 tree = new Lesson4.Task6();
+
+                            tree.TaskResultOutput();
+
                             break;
                         }
                     default:

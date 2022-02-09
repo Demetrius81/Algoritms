@@ -6,7 +6,7 @@ namespace Algoritms.Lesson4
 {
     class Task5 : ITask
     {
-        private string _taskNumber = "4";
+        private string _taskNumber = "5";
 
         public string TaskNumber { get => _taskNumber; }
 
@@ -15,7 +15,16 @@ namespace Algoritms.Lesson4
         public string TaskName { get => _taskName; }
 
 
+        private SortedDictionary<int, object> DataGenerate(int count)
+        {
+            SortedDictionary<int, object> sDict = new SortedDictionary<int, object>();
 
+            for (int i = 1; i <= count; i++)
+            {
+                sDict.Add(i, String.Format($"Данные элемента №{i}"));
+            }
+            return sDict;
+        }
 
         public void TaskResultOutput()
         {
@@ -23,47 +32,47 @@ namespace Algoritms.Lesson4
 
             int count = 10; //задаем размер дерева
 
-            //tree.CreateTree(count);
-           
-            tree.CreateDataLine(count);
-            
-            //tree.Add(12, "goooooooooo");
-            
-            //tree.Remove(5);
-            
-            //tree.Remove(8);
-            
-            //tree.Add(11);
-            
-            //tree.Add(10, "yaaaaaaaaaaa");
-            
-            //tree.Add(5, "YOOOOOOOOOOOO");
-            
-            //tree.PrintTreePrefixBypass();
+            SortedDictionary<int, object> sDict = DataGenerate(count);
 
-            //tree.PrintTreePostfixBypass();
+            tree.CreateTree(sDict);
+                        
+            tree.Add(12, "goooooooooo");
+            
+            tree.Remove(5);
+            
+            tree.Remove(8);
+            
+            tree.Add(11);
+            
+            tree.Add(10, "yaaaaaaaaaaa");
+            
+            tree.Add(5, "YOOOOOOOOOOOO");
+            
+            tree.PrintTreePrefixBypass();
+
+            tree.PrintTreePostfixBypass();
 
             tree.PrintTreeInfixBypass();
 
-            Dictionary<int, object> dict = tree.TreeToDict();
+            //Dictionary<int, object> dict = tree.TreeToDict();
 
-            Console.WriteLine();
+            //Console.WriteLine();
 
-            foreach (var key in dict.Keys)
-            {
-                Console.WriteLine(dict[key]);
-            }
-
-
+            //foreach (var key in dict.Keys)
+            //{
+            //    Console.WriteLine(dict[key]);
+            //}
 
 
-            //object rrr = tree.Contains(5) ? tree.FindNode(5).Data : "Не найден";
 
-            //object qqq = tree.FindNode(18).Data;
 
-            //Console.WriteLine(rrr);
+            object rrr = tree.Contains(5) ? tree.FindNode(5).Data : "Не найден";
 
-            //Console.WriteLine(qqq);
+            object www = tree.Contains(18) ? tree.FindNode(18).Data : "Не найден";
+
+            Console.WriteLine(rrr);
+
+            Console.WriteLine(www);
 
             Console.ReadKey();
         }
