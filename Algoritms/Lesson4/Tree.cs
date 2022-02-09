@@ -27,9 +27,9 @@ namespace Algoritms.Lesson4
 
             int n = 0;
 
-            int nl = 0;
+            //int nl = 0;
 
-            int nr = 0;
+            //int nr = 0;
 
             NodeOfTree newNode = null;
 
@@ -43,28 +43,25 @@ namespace Algoritms.Lesson4
                 {
                     n = count / 2 + 1;
 
-                    nl = count - n;
+                    //nl = count - n;
 
-                    nr = count - n;
+                    //nr = count - n;
                 }
                 else
                 {
                     n = count / 2;
 
-                    nl = count - n - 1;
+                    //nl = count - n - 1;
 
-                    nr = count - n;
+                    //nr = count - n;
                 }
-
                 newNode = new NodeOfTree(n, sDict[n]);
 
                 if (RootNode == null)
                 {
                     RootNode = newNode;
                 }
-
-
-                for (int i = n-1; i >= 1; i--)
+                for (int i = n - 1; i >= 1; i--)
                 {
                     Add(i, sDict[i]);
                 }
@@ -75,51 +72,6 @@ namespace Algoritms.Lesson4
                 }
             }
         }
-
-        #region пока не нужно
-
-        ///// <summary>
-        ///// Метод строит дерево
-        ///// </summary>
-        ///// <param name="count">int количество элементов в дереве</param>
-        //public void CreateTree(int count)
-        //{
-        //    BuildTree(count);
-        //}
-
-        ///// <summary>
-        ///// Метод строит симметричное дерево с пустыми значениями данных
-        ///// </summary>
-        ///// <param name="count">int количество элементов в дереве</param>
-        ///// <returns></returns>
-        //private NodeOfTree BuildTree(SortedDictionary<int, object> sDict)
-        //{
-        //    NodeOfTree newNode = null;
-
-        //    int count = sDict.Count;
-
-        //    if (count == 0)
-        //    {
-        //        return null;
-        //    }
-        //    else
-        //    {
-
-
-
-        //        if (RootNode == null)
-        //        {
-        //            RootNode = newNode;
-        //        }
-
-        //        newNode.LeftNode = BuildTree(nl);
-
-        //        newNode.RightNode = BuildTree(nr);
-        //    }
-        //    return newNode;
-        //}
-
-        #endregion
 
         /// <summary>
         /// Метод вычисляет находится ли элемент с указанным индексом в дереве
@@ -178,14 +130,11 @@ namespace Algoritms.Lesson4
                     break;
                 }
             }
-
             return current;
         }
 
-
-
         /// <summary>
-        /// Метод добавляет элемент дерева по тндексу
+        /// Метод добавляет элемент дерева по индексу
         /// </summary>
         /// <param name="index">int индекс элемента</param>
         public void Add(int index)
@@ -203,7 +152,7 @@ namespace Algoritms.Lesson4
         }
 
         /// <summary>
-        /// Метод добавляет элемент дерева по тндексу
+        /// Метод добавляет элемент дерева по индексу
         /// </summary>
         /// <param name="index">int индекс элемента</param>
         /// <param name="data">object хранимые данные</param>
@@ -423,122 +372,120 @@ namespace Algoritms.Lesson4
             return true;
         }
 
-
+        /// <summary>
+        /// Метод выводит запускает обход дерева
+        /// </summary>
         public void PrintTreePrefixBypass()
         {
             Console.Clear();
 
-            PrintTreePrefixBypass(RootNode, "");
+            Console.WriteLine($"Префиксный обход дерева");
+
+            PrintTreePrefixBypass(RootNode);
+
+            Console.WriteLine($"Чтобы продолжить нажмите любую клавишу");
 
             Console.ReadKey();
         }
 
-        private void PrintTreePrefixBypass(NodeOfTree node, string temp)
+        /// <summary>
+        /// Префиксный обход дерева рекурсией с выводом в консоль элементов
+        /// </summary>
+        /// <param name="node">NodeOfTree string строковая переменная - попытка вывести дерево со ступенями</param>
+        private void PrintTreePrefixBypass(NodeOfTree node)
         {
             if (node != null)
             {
-                temp = String.Format(temp/* + "\t"*/);
+                Console.WriteLine(String.Format($"{node.Index}\t{node.Data}"));
 
-                Console.WriteLine(String.Format($"{temp}{node.Index}\t{node.Data}"));
+                PrintTreePrefixBypass(node.LeftNode);
 
-                PrintTreePrefixBypass(node.LeftNode, temp);
-
-                PrintTreePrefixBypass(node.RightNode, temp);
+                PrintTreePrefixBypass(node.RightNode);
             }
         }
 
+        /// <summary>
+        /// Метод выводит запускает обход дерева
+        /// </summary>
         public void PrintTreePostfixBypass()
         {
             Console.Clear();
 
-            PrintTreePostfixBypass(RootNode, "");
+            Console.WriteLine($"Постфиксный обход дерева");
+
+            PrintTreePostfixBypass(RootNode);
+
+            Console.WriteLine($"Чтобы продолжить нажмите любую клавишу");
 
             Console.ReadKey();
         }
 
-        private void PrintTreePostfixBypass(NodeOfTree node, string temp)
+        /// <summary>
+        /// Постфиксный обход дерева рекурсией с выводом в консоль элементов
+        /// </summary>
+        /// <param name="node">NodeOfTree string строковая переменная - попытка вывести дерево со ступенями</param>        
+        private void PrintTreePostfixBypass(NodeOfTree node)
         {
             if (node != null)
             {
-                temp = String.Format(temp/* + "\t"*/);
+                PrintTreePostfixBypass(node.LeftNode);
 
-                PrintTreePrefixBypass(node.LeftNode, temp);
+                PrintTreePostfixBypass(node.RightNode);
 
-                PrintTreePrefixBypass(node.RightNode, temp);
-
-                Console.WriteLine(String.Format($"{temp}{node.Index}\t{node.Data}"));
+                Console.WriteLine(String.Format($"{node.Index}\t{node.Data}"));
             }
         }
 
+        /// <summary>
+        /// Метод выводит запускает обход дерева
+        /// </summary>
         public void PrintTreeInfixBypass()
         {
             Console.Clear();
 
-            PrintTreeInfixBypass(RootNode, "");
+            Console.WriteLine($"Инфиксный обход дерева");
+
+            PrintTreeInfixBypass(RootNode);
+
+            Console.WriteLine($"Чтобы продолжить нажмите любую клавишу");
 
             Console.ReadKey();
         }
 
-        private void PrintTreeInfixBypass(NodeOfTree node, string temp)
+        /// <summary>
+        /// Инфиксный обход дерева рекурсией с выводом в консоль элементов
+        /// </summary>
+        /// <param name="node">NodeOfTree string строковая переменная - попытка вывести дерево со ступенями</param>
+        private void PrintTreeInfixBypass(NodeOfTree node)
         {
             if (node != null)
             {
-                temp = String.Format(temp/* + "\t"*/);
-
-                PrintTreePrefixBypass(node.LeftNode, temp);
+                PrintTreeInfixBypass(node.LeftNode);
 
                 if (node.Data != null)
                 {
-                    Console.WriteLine(string.Format($"{temp}{node.Index}\t{node.Data}"));
+                    Console.WriteLine(string.Format($"{node.Index}\t{node.Data}"));
                 }
 
-                PrintTreePrefixBypass(node.RightNode, temp);
+                PrintTreeInfixBypass(node.RightNode);
             }
         }
 
+        /// <summary>
+        /// Метод выводит запускает обход дерева
+        /// </summary>
+        /// <param name="str">string сообщение пользователю</param>
+        public void PrintTreeInfixBypass(string str)
+        {
+            Console.Clear();
 
+            Console.WriteLine($"{str}");
 
+            PrintTreeInfixBypass(RootNode);
 
+            Console.WriteLine($"Чтобы продолжить нажмите любую клавишу");
 
-
-
-
-
-
-        //public Dictionary<int, object> TreeToDict()
-        //{
-        //    return TreePass(RootNode);
-        //}
-
-
-
-
-
-
-
-        //private void TreePass(NodeOfTree node, SortedDictionary<int, object> sDict)
-        //{
-        //    if (node != null)
-        //    {
-        //        TreePass(node.LeftNode, sDict);
-
-        //        if (node.Data != null)
-        //        {
-        //            node.Index = 
-                        
-        //            node.Data
-        //        }
-        //        TreePass(node.RightNode, sDict);
-        //    }
-        //    //return dict;
-        //}
-
-
-
-
-
-
-
-
+            Console.ReadKey();
+        }
     }
 }

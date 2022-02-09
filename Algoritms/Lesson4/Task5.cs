@@ -35,42 +35,48 @@ namespace Algoritms.Lesson4
             SortedDictionary<int, object> sDict = DataGenerate(count);
 
             tree.CreateTree(sDict);
-                        
-            tree.Add(12, "goooooooooo");
-            
-            tree.Remove(5);
-            
-            tree.Remove(8);
-            
-            tree.Add(11);
-            
-            tree.Add(10, "yaaaaaaaaaaa");
-            
-            tree.Add(5, "YOOOOOOOOOOOO");
-            
+
             tree.PrintTreePrefixBypass();
 
             tree.PrintTreePostfixBypass();
 
             tree.PrintTreeInfixBypass();
 
-            //Dictionary<int, object> dict = tree.TreeToDict();
+            tree.Add(12, "goooooooooo");
 
-            //Console.WriteLine();
+            tree.PrintTreeInfixBypass("Добавлен элемент по индексом 12");
 
-            //foreach (var key in dict.Keys)
-            //{
-            //    Console.WriteLine(dict[key]);
-            //}
+            tree.Remove(5);
 
+            tree.PrintTreeInfixBypass("Удален элемент по индексом 5");
 
+            tree.Remove(8);
 
+            tree.PrintTreeInfixBypass("Удален элемент по индексом 8");
+
+            tree.Add(11);
+
+            tree.PrintTreeInfixBypass("Добавлен элемент по индексом 11 без данных");
+
+            tree.Add(10, "yaaaaaaaaaaa");
+
+            tree.PrintTreeInfixBypass("Добавлен элемент по индексом 10");
+
+            tree.Add(5, "YOOOOOOOOOOOO");
+
+            tree.PrintTreeInfixBypass("Добавлен элемент по индексом 5");
+
+            Console.WriteLine($"Поиск элемента с индексом 5 и вывод его данных в консоль");
 
             object rrr = tree.Contains(5) ? tree.FindNode(5).Data : "Не найден";
 
-            object www = tree.Contains(18) ? tree.FindNode(18).Data : "Не найден";
-
             Console.WriteLine(rrr);
+
+            Console.ReadKey();
+
+            Console.WriteLine($"Поиск элемента с индексом 18 (такого элемента нет) и вывод его данных в консоль");
+
+            object www = tree.Contains(18) ? tree.FindNode(18).Data : "Не найден";
 
             Console.WriteLine(www);
 

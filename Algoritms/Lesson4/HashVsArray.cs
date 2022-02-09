@@ -5,6 +5,9 @@ using System.Linq;
 
 namespace Algoritms.Lesson4
 {
+    /// <summary>
+    /// Тест Хеш список против массива, скорость поиска значения значения
+    /// </summary>
     class HashVsArray
     {
         /// <summary>
@@ -43,6 +46,10 @@ namespace Algoritms.Lesson4
             return hs;
         }
 
+        /// <summary>
+        /// Метод производит непосредственно тест
+        /// </summary>
+        /// <param name="lenght">int количество элементов</param>
         private void Test(int lenght)
         {
             Lesson3.StopWatch swHs = new Lesson3.StopWatch();
@@ -70,7 +77,9 @@ namespace Algoritms.Lesson4
             PrintResults(lenght, swHs.Time, swArr.Time, Ratio);
         }
 
-
+        /// <summary>
+        /// Метод проводит несколько тестов
+        /// </summary>
         public void ResultOutput()
         {
             PrintHead();
@@ -153,21 +162,5 @@ namespace Algoritms.Lesson4
 
             Console.WriteLine($"|---------------------|---------------------|---------------------|---------------------|");
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }

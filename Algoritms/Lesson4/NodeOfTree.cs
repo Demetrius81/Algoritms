@@ -15,7 +15,7 @@ namespace Algoritms.Lesson4
         /// Поле хранимые данные
         /// </summary>
         private object _data;
-                
+
         /// <summary>
         /// Поле ссылка на следующий элемент слева
         /// </summary>
@@ -52,7 +52,7 @@ namespace Algoritms.Lesson4
         /// <param name="value"></param>
         public NodeOfTree()
         {
-            
+
         }
 
         /// <summary>
