@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Algoritms.Lesson4
 {
-    class Tree : ITask
+    class Tree
     {
         /// <summary>
         /// Поле корневой элемент дерева
@@ -17,61 +17,105 @@ namespace Algoritms.Lesson4
         public NodeOfTree RootNode { get => _rootNode; set => _rootNode = value; }
 
         /// <summary>
-        /// Поле количество узлов дерева
+        /// Метод заполняет дерево данными
         /// </summary>
-        private int _count;
-
-        /// <summary>
-        /// Свойство поля количество узлов дерева
-        /// </summary>
-        public int Count { get => _count; set => _count = value; }
-
-
-
-        private string _taskNumber = "4";
-
-        public string TaskNumber { get => _taskNumber; }
-
-        private string _taskName = "Работа с бинарным деревом поиска";
-
-        public string TaskName { get => _taskName; }
-
-
-
-
-        public void TaskResultOutput()
+        /// <param name="count">int количество элементов в дереве</param>
+        public void CreateDataLine(int count)
         {
-            CreateDataLine(10);
-
-            PrintTreePrefixBypass();
-
-            PrintTreePostfixBypass();
-
-            PrintTreeInfixBypass();
-        }
-
-        private Tree CreateDataLine(int count)
-        {
-            Tree tree = new Tree();
-
             for (int i = 1; i <= count; i++)
             {
-                tree.Add(i, String.Format($"Элемент №{i}"));
+                Add(i, String.Format($"Элемент №{i}"));
             }
-
-            return tree;
         }
+
+        #region пока не нужно
+
+        ///// <summary>
+        ///// Метод строит дерево
+        ///// </summary>
+        ///// <param name="count">int количество элементов в дереве</param>
+        //public void CreateTree(int count)
+        //{
+        //    BuildTree(count);
+        //}
+
+        ///// <summary>
+        ///// Метод строит симметричное дерево с пустыми значениями данных
+        ///// </summary>
+        ///// <param name="count">int количество элементов в дереве</param>
+        ///// <returns></returns>
+        //private NodeOfTree BuildTree(int count)
+        //{
+        //    NodeOfTree newNode = null;
+
+        //    if (count == 0)
+        //    {
+        //        return null;
+        //    }
+        //    else
+        //    {
+        //        int n = 0;
+
+        //        int nl = 0;
+
+        //        int nr = 0;
+
+        //        if (count % 2 != 0)
+        //        {
+        //            n = count / 2 + 1;
+
+        //            nl = n - 1;
+
+        //            nr = count - n;
+        //        }
+        //        else
+        //        {
+        //            n = count / 2;
+
+        //            nl = n - 1;
+
+        //            nr = count - n;
+        //        }
+        //        newNode = new NodeOfTree(n);
+
+        //        if (RootNode == null)
+        //        {
+        //            RootNode = newNode;
+        //        }
+
+        //        newNode.LeftNode = BuildTree(nl);
+
+        //        newNode.RightNode = BuildTree(nr);
+        //    }
+        //    return newNode;
+        //}
+
+        #endregion
 
         /// <summary>
         /// Метод вычисляет находится ли элемент с указанным индексом в дереве
         /// </summary>
         /// <param name="index">int индекс элемента</param>
         /// <returns>bool возврашает результат вычисления</returns>
-        private bool Contains(int index)
+        public bool Contains(int index)
         {
             NodeOfTree parent;
 
             return FindWithParent(out parent, index) != null;
+        }
+
+        /// <summary>
+        /// Метод поиска узла по индексу
+        /// </summary>
+        /// <param name="index">int индекс элемента</param>
+        /// <returns></returns>
+        public NodeOfTree FindNode(int index)
+        {
+            NodeOfTree parent;
+
+            NodeOfTree node = Contains(index) ? FindWithParent(out parent, index) : new NodeOfTree();
+
+            return node;
         }
 
         /// <summary>
@@ -109,11 +153,13 @@ namespace Algoritms.Lesson4
             return current;
         }
 
+
+
         /// <summary>
         /// Метод добавляет элемент дерева по тндексу
         /// </summary>
         /// <param name="index">int индекс элемента</param>
-        private void Add(int index)
+        public void Add(int index)
         {
             if (RootNode == null)
             {
@@ -125,7 +171,6 @@ namespace Algoritms.Lesson4
             {
                 AddTo(RootNode, index);
             }
-            Count++;
         }
 
         /// <summary>
@@ -133,7 +178,7 @@ namespace Algoritms.Lesson4
         /// </summary>
         /// <param name="index">int индекс элемента</param>
         /// <param name="data">object хранимые данные</param>
-        private void Add(int index, object data)
+        public void Add(int index, object data)
         {
             if (RootNode == null)
             {
@@ -145,7 +190,6 @@ namespace Algoritms.Lesson4
             {
                 AddTo(RootNode, index, data);
             }
-            Count++;
         }
 
         /// <summary>
@@ -166,7 +210,7 @@ namespace Algoritms.Lesson4
                     AddTo(node.LeftNode, index);
                 }
             }
-            else
+            else if (index > node.Index)
             {
                 if (node.RightNode == null)
                 {
@@ -196,9 +240,9 @@ namespace Algoritms.Lesson4
                 else
                 {
                     AddTo(node.LeftNode, index, data);
-                }
+                }                
             }
-            else
+            else if (index > node.Index)
             {
                 if (node.RightNode == null)
                 {
@@ -207,7 +251,11 @@ namespace Algoritms.Lesson4
                 else
                 {
                     AddTo(node.RightNode, index, data);
-                }
+                }               
+            }
+            else if (index == node.Index)
+            {
+                node.Data = data;
             }
         }
 
@@ -216,7 +264,7 @@ namespace Algoritms.Lesson4
         /// </summary>
         /// <param name="index">int индекс элемента</param>
         /// <returns>bool возвращает значение удален ли элемент</returns>
-        private bool Remove(int index)
+        public bool Remove(int index)
         {
             NodeOfTree current;
 
@@ -228,8 +276,6 @@ namespace Algoritms.Lesson4
             {
                 return false;
             }
-
-            Count--;
 
             //если нет детей справа
 
@@ -349,7 +395,7 @@ namespace Algoritms.Lesson4
         }
 
 
-        private void PrintTreePrefixBypass()
+        public void PrintTreePrefixBypass()
         {
             Console.Clear();
 
@@ -360,11 +406,11 @@ namespace Algoritms.Lesson4
 
         private void PrintTreePrefixBypass(NodeOfTree node, string temp)
         {
-            if (node!=null)
+            if (node != null)
             {
-                temp = String.Format(temp + "/t");
+                temp = String.Format(temp/* + "\t"*/);
 
-                Console.WriteLine(String.Format($"{temp}{node.Index}/t{node.Data}"));
+                Console.WriteLine(String.Format($"{temp}{node.Index}\t{node.Data}"));
 
                 PrintTreePrefixBypass(node.LeftNode, temp);
 
@@ -372,7 +418,7 @@ namespace Algoritms.Lesson4
             }
         }
 
-        private void PrintTreePostfixBypass()
+        public void PrintTreePostfixBypass()
         {
             Console.Clear();
 
@@ -385,17 +431,17 @@ namespace Algoritms.Lesson4
         {
             if (node != null)
             {
-                temp = String.Format(temp + "/t");
+                temp = String.Format(temp/* + "\t"*/);
 
                 PrintTreePrefixBypass(node.LeftNode, temp);
 
                 PrintTreePrefixBypass(node.RightNode, temp);
 
-                Console.WriteLine(String.Format($"{temp}{node.Index}/t{node.Data}"));
+                Console.WriteLine(String.Format($"{temp}{node.Index}\t{node.Data}"));
             }
         }
 
-        private void PrintTreeInfixBypass()
+        public void PrintTreeInfixBypass()
         {
             Console.Clear();
 
@@ -408,17 +454,55 @@ namespace Algoritms.Lesson4
         {
             if (node != null)
             {
-                temp = String.Format(temp + "/t");
+                temp = String.Format(temp/* + "\t"*/);
 
                 PrintTreePrefixBypass(node.LeftNode, temp);
 
-                Console.WriteLine(string.Format($"{temp}{node.Index}/t{node.Data}"));
+                if (node.Data != null)
+                {
+                    Console.WriteLine(string.Format($"{temp}{node.Index}\t{node.Data}"));
+                }
 
                 PrintTreePrefixBypass(node.RightNode, temp);
             }
         }
 
 
+
+
+
+
+
+
+
+
+        public Dictionary<int, object> TreeToDict()
+        {
+            return TreePass(RootNode);
+        }
+
+
+
+
+
+
+
+        private Dictionary<int, object> TreePass(NodeOfTree node)
+        {
+            Dictionary<int, object> dict = new Dictionary<int, object>();
+
+            if (node != null)
+            {
+                TreePass(node.LeftNode);
+
+                if (node.Data != null)
+                {
+                    dict.Add(node.Index, node.Data);
+                }
+                TreePass(node.RightNode);
+            }
+            return dict;
+        }
 
 
 

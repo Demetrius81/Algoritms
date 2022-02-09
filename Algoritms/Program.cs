@@ -90,7 +90,7 @@ namespace Algoritms
                         }
                     case 5:
                         {
-                            Lesson4.Tree tree = new Lesson4.Tree();
+                            Lesson4.Task5 tree = new Lesson4.Task5();
 
                             tree.TaskResultOutput();
 

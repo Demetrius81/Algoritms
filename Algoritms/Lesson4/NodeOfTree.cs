@@ -50,6 +50,15 @@ namespace Algoritms.Lesson4
         /// Конструктор
         /// </summary>
         /// <param name="value"></param>
+        public NodeOfTree()
+        {
+            
+        }
+
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="value"></param>
         public NodeOfTree(int value)
         {
             Index = value;
