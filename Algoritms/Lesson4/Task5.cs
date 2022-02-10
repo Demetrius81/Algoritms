@@ -34,37 +34,39 @@ namespace Algoritms.Lesson4
 
             SortedDictionary<int, object> sDict = DataGenerate(count);
 
-            tree.CreateTree(sDict);
+            tree.BuildTreeByHands(sDict);
 
-            tree.PrintTreePrefixBypass();
+            tree.PrintTreePrefixBypass("Префиксный обход дерева. Хорош для копирования");
 
-            tree.PrintTreePostfixBypass();
+            tree.PrintTreePostfixBypass("Постфиксный обход дерева. Хорош для удаления дерева");
 
-            tree.PrintTreeInfixBypass();
+            tree.PrintTreeInfixBypass("Инфиксный обход дерева. Хорош для сортировки");
 
             tree.Add(12, "goooooooooo");
 
-            tree.PrintTreeInfixBypass("Добавлен элемент по индексом 12");
+            tree.PrintTreeInfixBypass($"Добавлен элемент по индексом 12. Размер дерева {tree.Count}");
 
             tree.Remove(5);
 
-            tree.PrintTreeInfixBypass("Удален элемент по индексом 5");
+            tree.PrintTreeInfixBypass($"Удален элемент по индексом 5. Размер дерева {tree.Count}");
 
             tree.Remove(8);
 
-            tree.PrintTreeInfixBypass("Удален элемент по индексом 8");
+            tree.PrintTreeInfixBypass($"Удален элемент по индексом 8. Размер дерева {tree.Count}");
 
             tree.Add(11);
 
-            tree.PrintTreeInfixBypass("Добавлен элемент по индексом 11 без данных");
+            tree.PrintTreeInfixBypass($"Добавлен элемент по индексом 11 без данных. Размер дерева {tree.Count}");
 
             tree.Add(10, "yaaaaaaaaaaa");
 
-            tree.PrintTreeInfixBypass("Добавлен элемент по индексом 10");
+            tree.PrintTreeInfixBypass($"Добавлен элемент по индексом 10. Размер дерева {tree.Count}");
 
             tree.Add(5, "YOOOOOOOOOOOO");
 
-            tree.PrintTreeInfixBypass("Добавлен элемент по индексом 5");
+            tree.PrintTreeInfixBypass($"Добавлен элемент по индексом 5. Размер дерева {tree.Count}");
+
+            Console.Clear();
 
             Console.WriteLine($"Поиск элемента с индексом 5 и вывод его данных в консоль");
 
@@ -73,6 +75,8 @@ namespace Algoritms.Lesson4
             Console.WriteLine(rrr);
 
             Console.ReadKey();
+
+            Console.Clear();
 
             Console.WriteLine($"Поиск элемента с индексом 18 (такого элемента нет) и вывод его данных в консоль");
 

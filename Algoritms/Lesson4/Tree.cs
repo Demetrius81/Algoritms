@@ -16,6 +16,35 @@ namespace Algoritms.Lesson4
         /// </summary>
         public NodeOfTree RootNode { get => _rootNode; set => _rootNode = value; }
 
+        /// <summary>
+        /// Поле размер дерева
+        /// </summary>
+        private int _count;
+
+        /// <summary>
+        /// Свойство поля размер дерева
+        /// </summary>
+        public int Count { get => _count; set => _count = value; }
+
+        /// <summary>
+        /// Метод строит дерево из 10 элементов и заполныет его данными извне
+        /// </summary>
+        /// <param name="sDict">SortedDictionary<int, object> источник данных для дерева</param>
+        public void BuildTreeByHands(SortedDictionary<int, object> sDict)
+        {
+            Add(5, sDict[5]);
+            Add(3, sDict[3]);
+            Add(1, sDict[1]);
+            Add(2, sDict[2]);
+            Add(4, sDict[4]);
+            Add(8, sDict[8]);
+            Add(7, sDict[7]);
+            Add(6, sDict[6]);
+            Add(9, sDict[9]);
+            Add(10, sDict[10]);
+        }
+
+        #region Метод работает, но заполняет не деревом а линией от корня влево и вправо.
 
         /// <summary>
         /// Метод создает и заполняет дерево данными из внешнего источника
@@ -72,6 +101,8 @@ namespace Algoritms.Lesson4
                 }
             }
         }
+
+        #endregion
 
         /// <summary>
         /// Метод вычисляет находится ли элемент с указанным индексом в дереве
@@ -149,6 +180,7 @@ namespace Algoritms.Lesson4
             {
                 AddTo(RootNode, index);
             }
+            Count++;
         }
 
         /// <summary>
@@ -168,6 +200,7 @@ namespace Algoritms.Lesson4
             {
                 AddTo(RootNode, index, data);
             }
+            Count++;
         }
 
         /// <summary>
@@ -234,6 +267,8 @@ namespace Algoritms.Lesson4
             else if (index == node.Index)
             {
                 node.Data = data;
+
+                Count--;
             }
         }
 
@@ -254,6 +289,7 @@ namespace Algoritms.Lesson4
             {
                 return false;
             }
+            Count--;
 
             //если нет детей справа
 
@@ -373,13 +409,13 @@ namespace Algoritms.Lesson4
         }
 
         /// <summary>
-        /// Метод выводит запускает обход дерева
+        /// Метод запускает префиксный обход дерева
         /// </summary>
-        public void PrintTreePrefixBypass()
+        public void PrintTreePrefixBypass(string str)
         {
             Console.Clear();
 
-            Console.WriteLine($"Префиксный обход дерева");
+            Console.WriteLine($"{str}");
 
             PrintTreePrefixBypass(RootNode);
 
@@ -405,13 +441,13 @@ namespace Algoritms.Lesson4
         }
 
         /// <summary>
-        /// Метод выводит запускает обход дерева
+        /// Метод запускает постфиксный обход дерева
         /// </summary>
-        public void PrintTreePostfixBypass()
+        public void PrintTreePostfixBypass(string str)
         {
             Console.Clear();
 
-            Console.WriteLine($"Постфиксный обход дерева");
+            Console.WriteLine($"{str}");
 
             PrintTreePostfixBypass(RootNode);
 
@@ -437,13 +473,13 @@ namespace Algoritms.Lesson4
         }
 
         /// <summary>
-        /// Метод выводит запускает обход дерева
+        /// Метод запускает инфиксный обход дерева
         /// </summary>
-        public void PrintTreeInfixBypass()
+        public void PrintTreeInfixBypass(string str)
         {
             Console.Clear();
 
-            Console.WriteLine($"Инфиксный обход дерева");
+            Console.WriteLine($"{str}");
 
             PrintTreeInfixBypass(RootNode);
 
@@ -469,23 +505,6 @@ namespace Algoritms.Lesson4
 
                 PrintTreeInfixBypass(node.RightNode);
             }
-        }
-
-        /// <summary>
-        /// Метод выводит запускает обход дерева
-        /// </summary>
-        /// <param name="str">string сообщение пользователю</param>
-        public void PrintTreeInfixBypass(string str)
-        {
-            Console.Clear();
-
-            Console.WriteLine($"{str}");
-
-            PrintTreeInfixBypass(RootNode);
-
-            Console.WriteLine($"Чтобы продолжить нажмите любую клавишу");
-
-            Console.ReadKey();
         }
     }
 }
