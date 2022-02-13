@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Algoritms
+namespace Algoritms.Lesson3
 {
     /// <summary>
     /// Класс, содержащий координаты точки

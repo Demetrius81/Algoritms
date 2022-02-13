@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Algoritms
+namespace Algoritms.Lesson3
 {
     internal class PointsTests : ITask
     {
-        private string _taskNumber = "1_2";
+        private string _taskNumber = "3";
 
         public string TaskNumber { get => _taskNumber; }
 
