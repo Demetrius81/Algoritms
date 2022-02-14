@@ -4,7 +4,10 @@ using System.Text;
 
 namespace Algoritms.Lesson2
 {
-    internal class DoubleLinkedList : INode, ITask
+    /// <summary>
+    /// Двухсвязный список
+    /// </summary>
+    internal class DoubleLinkedList : INode
     {
         #region Поля и свойства
 
@@ -28,58 +31,7 @@ namespace Algoritms.Lesson2
         /// </summary>
         public Node LastNode { get => _lastNode; set => _lastNode = value; }
 
-        private string _taskNumber = "2";
-
-        public string TaskNumber { get => _taskNumber; }
-
-        private string _taskName = "Работа с двусвязным списком";
-
-        public string TaskName { get => _taskName; }
-
         #endregion
-
-        public void TaskResultOutput()
-        {
-            DoubleLinkedList list = new DoubleLinkedList();
-
-            for (int i = 0; i < 10; i++)
-            {
-                list.AddNode((i + 1) * 10);
-            }
-            Console.WriteLine($"Вновь созданный список");
-
-            list.PrintDoubleLinkedList();
-
-            int a = 50;
-
-            int b = 999;
-
-            int index = 8;
-
-            list.AddNodeAfter(list.FindNode(a), b);
-
-            Console.WriteLine($"Список после добавления элемента со значением {b} после элемента со значением {a}");
-
-            list.PrintDoubleLinkedList();
-
-            Console.WriteLine();
-
-            list.RemoveNode(list.FindNode(50));
-
-            Console.WriteLine($"Список после удаления элемента со значением {b}");
-
-            list.PrintDoubleLinkedList();
-
-            Console.WriteLine();
-
-            list.RemoveNode(index);
-
-            Console.WriteLine($"Список после удаления элемента с индексом {index}");
-
-            list.PrintDoubleLinkedList();
-
-            Console.WriteLine();
-        }
 
         /// <summary>
         /// Возвращает количество элементов в списке
@@ -246,7 +198,7 @@ namespace Algoritms.Lesson2
         /// <summary>
         /// Выводит в консоль список
         /// </summary>
-        private void PrintDoubleLinkedList()
+        public void PrintDoubleLinkedList()
         {
             Node currentNode = FirstNode;
 

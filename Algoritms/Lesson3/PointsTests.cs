@@ -4,35 +4,8 @@ using System.Text;
 
 namespace Algoritms.Lesson3
 {
-    internal class PointsTests : ITask
+    public class PointsTests
     {
-        private string _taskNumber = "3";
-
-        public string TaskNumber { get => _taskNumber; }
-
-        private string _taskName = "Работа с замерами времени вычислений";
-
-        public string TaskName { get => _taskName; }
-
-        public void TaskResultOutput()
-        {
-            PrintHead();
-
-            Test(100000);
-
-            Test(200000);
-
-            Test(500000);
-
-            Test(1000000);
-
-            Test(10000000);
-
-            Test(100000000);
-
-            Console.ReadKey();
-        }
-
         /// <summary>
         /// Заполняет массив точек класса случайными числами
         /// </summary>
@@ -78,7 +51,7 @@ namespace Algoritms.Lesson3
         /// <summary>
         /// Шапка таблицы
         /// </summary>
-        private void PrintHead()
+        public void PrintHead()
         {
             Console.Clear();
 
@@ -96,7 +69,7 @@ namespace Algoritms.Lesson3
         /// <param name="timeStruct">double время расчета для структуры</param>
         /// <param name="timeClass">double время расчета для класса</param>
         /// <param name="Ratio">отношение времени расчета</param>
-        private void PrintResults(int numC, double timeStruct, double timeClass, double Ratio)
+        public void PrintResults(int numC, double timeStruct, double timeClass, double Ratio)
         {
             Console.SetCursorPosition(0, Console.CursorTop);
 
@@ -141,7 +114,7 @@ namespace Algoritms.Lesson3
         /// Тест структуры и класса
         /// </summary>
 
-        private void Test(int num)
+        public void Test(int num)
         {
             StopWatch swClass = new StopWatch();
 
@@ -173,7 +146,7 @@ namespace Algoritms.Lesson3
         /// </summary>
         /// <param name="points">PointDoubleCla[] массив точек</param>
         /// <returns>int количество итераций</returns>
-        public int CalculatePointsDistance(PointDoubleClass[] points)
+        private int CalculatePointsDistance(PointDoubleClass[] points)
         {
             int i;
 
@@ -193,7 +166,7 @@ namespace Algoritms.Lesson3
         /// </summary>
         /// <param name="points">PointDoubleStr[] массив точек</param>
         /// <returns>int количество итераций</returns>
-        public int CalculatePointsDistance(PointDoubleStructure[] points)
+        private int CalculatePointsDistance(PointDoubleStructure[] points)
         {
             int i;
 
