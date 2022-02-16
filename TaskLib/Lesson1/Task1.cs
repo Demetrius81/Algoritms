@@ -1,20 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using TaskInt;
 
-namespace Algoritms.Lesson1
+namespace Task
 {
-    class Task1 : ITask
+    public class Task1 : BaseTask
     {
-        private string _taskNumber = "1";
+        private readonly string _taskNumber = "1";
+                
+        public override string TaskNumber { get => _taskNumber; }
 
-        public string TaskNumber { get => _taskNumber; }
+        private readonly string _taskName = $"Практическая работа 1. Проверка является ли число простым\t\t\t\t- задача 1";
+                
+        public override string TaskName { get => _taskName; }
 
-        private string _taskName = $"Практическая работа 1. Проверка является ли число простым\t\t\t\t- задача 1";
-
-        public string TaskName { get => _taskName; }
-
-        public void TaskResultOutput()
+        public override void TaskResultOutput()
         {
             PrimeNumber primeNumber = new PrimeNumber();
 

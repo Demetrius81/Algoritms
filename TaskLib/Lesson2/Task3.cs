@@ -1,20 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TaskInt;
 
-namespace Algoritms.Lesson2
+namespace Task
 {
-    class Task3 : ITask
+    public class Task3 : BaseTask
     {
-        private string _taskNumber = "3";
+        private readonly string _taskNumber = "3";
 
-        public string TaskNumber { get => _taskNumber; }
+        public override string TaskNumber { get => _taskNumber; }
 
-        private string _taskName = $"Практическая работа 2. Работа с двусвязным списком\t\t\t\t\t- задача 3";
+        private readonly string _taskName = $"Практическая работа 2. Работа с двусвязным списком\t\t\t\t\t- задача 3";
 
-        public string TaskName { get => _taskName; }
+        public override string TaskName { get => _taskName; }
 
-        public void TaskResultOutput()
+        public override void TaskResultOutput()
         {
             DoubleLinkedList list = new DoubleLinkedList();
 

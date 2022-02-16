@@ -1,20 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TaskInt;
 
-namespace Algoritms.Lesson1
+namespace Task
 {
-    class Task2 : ITask
+    public class Task2 : BaseTask
     {
-        private string _taskNumber = "2";
+        private readonly string _taskNumber = "2";
 
-        public string TaskNumber { get => _taskNumber; }
+        public override string TaskNumber { get => _taskNumber; }
 
-        private string _taskName = $"Практическая работа 1. Вывод ряда Фибоначчи до заданного предела\t\t\t- задача 2";
+        private readonly string _taskName = $"Практическая работа 1. Вывод ряда Фибоначчи до заданного предела\t\t\t- задача 2";
 
-        public string TaskName { get => _taskName; }
+        public override string TaskName { get => _taskName; }
 
-        public void TaskResultOutput()
+        public override void TaskResultOutput()
         {
             Fibonacci fibonacci = new Fibonacci();
 

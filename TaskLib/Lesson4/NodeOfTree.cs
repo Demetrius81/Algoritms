@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Algoritms.Lesson4
+namespace Task
 {
     class NodeOfTree
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 
-namespace Algoritms.Lesson4
+namespace Task
 {
     /// <summary>
     /// Тест Хеш список против массива, скорость поиска значения значения
@@ -52,23 +52,21 @@ namespace Algoritms.Lesson4
         /// <param name="lenght">int количество элементов</param>
         private void Test(int lenght)
         {
-            Lesson3.StopWatch swHs = new Lesson3.StopWatch();
+            StopWatch swHs = new StopWatch();
 
-            Lesson3.StopWatch swArr = new Lesson3.StopWatch();
+            StopWatch swArr = new StopWatch();
 
             HashSet<string> hs = GenerateHashSet(lenght);
 
             string[] arr = GenerateArray(lenght);
 
             swHs.Start();
-
-            bool isThereInList = hs.Contains(" ");
+            _ = hs.Contains(" ");
 
             swHs.Stop();
 
             swArr.Start();
-
-            bool isThereInArray = arr.Contains(" ");
+            _ = arr.Contains(" ");
 
             swArr.Stop();
 

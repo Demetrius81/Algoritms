@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Task;
+using TaskInt;
+using System.Reflection;
 
 namespace Algoritms
 {
@@ -8,19 +11,30 @@ namespace Algoritms
     {
         private static readonly List<ITask> _tasks = new List<ITask>()
         {
-            {new Lesson1.Task1() },
-            {new Lesson1.Task2() },
-            {new Lesson2.Task3() },
-            {new Lesson3.Task4() },
-            {new Lesson4.Task5() },
-            {new Lesson4.Task6() },
-            {new Lesson5.Task7() }
+            { new Task1() },
+            { new Task2() },
+            { new Task3() },
+            { new Task4() },
+            { new Task5() },
+            { new Task6() },
+            { new Task7() }
         };
 
         static void Main(string[] args)
         {
             TaskSelection();
+            //Tasks();
         }
+
+        //private static void Tasks()
+        //{
+       
+        //    Console.ReadKey();
+        //}
+
+
+
+
 
         /// <summary>
         /// Метод запускает цикл по выбору и выполнению задачи
@@ -63,6 +77,6 @@ namespace Algoritms
             Console.WriteLine($"Press any key to exit...");
 
             Console.ReadKey();
-        }       
+        }
     }
 }
