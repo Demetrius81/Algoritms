@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Algoritms.Lesson4
 {
+    /// <summary>
+    /// Клласс бинарное дерево поиска
+    /// </summary>
     class Tree
     {
         /// <summary>
@@ -27,82 +31,105 @@ namespace Algoritms.Lesson4
         public int Count { get => _count; set => _count = value; }
 
         /// <summary>
-        /// Метод строит дерево из 10 элементов и заполныет его данными извне
+        /// Метод получает на вход данные, преобразует их и вызывает метод построения дерева поиска
         /// </summary>
-        /// <param name="sDict">SortedDictionary<int, object> источник данных для дерева</param>
-        public void BuildTreeByHands(SortedDictionary<int, object> sDict)
+        /// <param name="sDict">SortedDictionary<int, object> отсортированный список ключей и данных, связанных с этими ключами</param>
+        public void BuildTree(SortedDictionary<int, object> sDict)
         {
-            Add(5, sDict[5]);
-            Add(3, sDict[3]);
-            Add(1, sDict[1]);
-            Add(2, sDict[2]);
-            Add(4, sDict[4]);
-            Add(8, sDict[8]);
-            Add(7, sDict[7]);
-            Add(6, sDict[6]);
-            Add(9, sDict[9]);
-            Add(10, sDict[10]);
-        }
+            List<int> keys = new List<int>();
 
-        #region Метод работает, но заполняет не деревом а линией от корня влево и вправо.
+            List<object> data = new List<object>();
+
+            foreach (int key in sDict.Keys)
+            {
+                keys.Add(key);
+
+                data.Add(sDict[key]);
+            }
+            AddListOfNodes(keys, data);
+        }
 
         /// <summary>
         /// Метод создает и заполняет дерево данными из внешнего источника
         /// </summary>
-        /// <param name="sDict">SortedDictionary<int, object> источник данных для дерева</param>
-        public void CreateTree(SortedDictionary<int, object> sDict)
+        /// <param name="keys">List<int> ключи для поиска даных</param>
+        /// <param name="data">List<object>данные</param>
+        /// <returns></returns>
+        private NodeOfTree AddListOfNodes(List<int> keys, List<object> data)
         {
-            int count = sDict.Count;
+            int n = keys.Count;
 
-            int n = 0;
+            NodeOfTree newNode;
 
-            //int nl = 0;
-
-            //int nr = 0;
-
-            NodeOfTree newNode = null;
-
-            if (count == 0)
-
-                return;
-
+            if (n == 0)
+            {
+                return null;
+            }
             else
             {
-                if (count % 2 != 0)
+                int nMed;
+
+                int nLeft;
+
+                int nRight;
+
+                if (n % 2 != 0)
                 {
-                    n = count / 2 + 1;
+                    nMed = n / 2 + 1;
 
-                    //nl = count - n;
+                    nLeft = n - nMed;
 
-                    //nr = count - n;
+                    nRight = n - nMed;
                 }
                 else
                 {
-                    n = count / 2;
+                    nMed = n / 2;
 
-                    //nl = count - n - 1;
+                    nLeft = n - nMed - 1;
 
-                    //nr = count - n;
+                    nRight = n - nMed;
                 }
-                newNode = new NodeOfTree(n, sDict[n]);
+                newNode = new NodeOfTree(keys[nMed - 1], data[nMed - 1]);
+
+                Count++;
 
                 if (RootNode == null)
                 {
                     RootNode = newNode;
                 }
-                for (int i = n - 1; i >= 1; i--)
+                if (nLeft != 0)
                 {
-                    Add(i, sDict[i]);
-                }
+                    List<int> keysLeftSholder = new List<int>();
 
-                for (int i = count; i > n; i--)
+                    List<object> dataLeftShoulder = new List<object>();
+
+                    for (int i = 0; i < nMed - 1; i++)
+                    {
+                        keysLeftSholder.Add(keys[i]);
+
+                        dataLeftShoulder.Add(data[i]);
+                    }
+                    newNode.LeftNode = AddListOfNodes(keysLeftSholder, dataLeftShoulder);
+
+                }
+                if (nRight != 0)
                 {
-                    Add(i, sDict[i]);
+                    List<int> keysRightSholder = new List<int>();
+
+                    List<object> dataRightShoulder = new List<object>();
+
+                    for (int i = nMed; i < n; i++)
+                    {
+                        keysRightSholder.Add(keys[i]);
+
+                        dataRightShoulder.Add(data[i]);
+                    }
+                    newNode.RightNode = AddListOfNodes(keysRightSholder, dataRightShoulder);
+
                 }
             }
+            return newNode;
         }
-
-        #endregion
 
         /// <summary>
         /// Метод вычисляет находится ли элемент с указанным индексом в дереве
@@ -111,21 +138,17 @@ namespace Algoritms.Lesson4
         /// <returns>bool возврашает результат вычисления</returns>
         public bool Contains(int index)
         {
-            NodeOfTree parent;
-
-            return FindWithParent(out parent, index) != null;
+            return FindWithParent(out _, index) != null;
         }
 
         /// <summary>
         /// Метод поиска узла по индексу
         /// </summary>
         /// <param name="index">int индекс элемента</param>
-        /// <returns></returns>
+        /// <returns>NodeOfTree искомый узел</returns>
         public NodeOfTree FindNode(int index)
         {
-            NodeOfTree parent;
-
-            NodeOfTree node = Contains(index) ? FindWithParent(out parent, index) : new NodeOfTree();
+            NodeOfTree node = Contains(index) ? FindWithParent(out _, index) : new NodeOfTree();
 
             return node;
         }
@@ -168,25 +191,6 @@ namespace Algoritms.Lesson4
         /// Метод добавляет элемент дерева по индексу
         /// </summary>
         /// <param name="index">int индекс элемента</param>
-        public void Add(int index)
-        {
-            if (RootNode == null)
-            {
-                NodeOfTree nodeOfTree = new NodeOfTree(index);
-
-                RootNode = nodeOfTree;
-            }
-            else
-            {
-                AddTo(RootNode, index);
-            }
-            Count++;
-        }
-
-        /// <summary>
-        /// Метод добавляет элемент дерева по индексу
-        /// </summary>
-        /// <param name="index">int индекс элемента</param>
         /// <param name="data">object хранимые данные</param>
         public void Add(int index, object data)
         {
@@ -201,37 +205,6 @@ namespace Algoritms.Lesson4
                 AddTo(RootNode, index, data);
             }
             Count++;
-        }
-
-        /// <summary>
-        /// Метод добавляет элемент дерева рекурсивным способом
-        /// </summary>
-        /// <param name="node">NodeOfTree узел дерева</param>
-        /// <param name="index">int индекс элемента</param>
-        private void AddTo(NodeOfTree node, int index)
-        {
-            if (index < node.Index)
-            {
-                if (node.LeftNode == null)
-                {
-                    node.LeftNode = new NodeOfTree(index);
-                }
-                else
-                {
-                    AddTo(node.LeftNode, index);
-                }
-            }
-            else if (index > node.Index)
-            {
-                if (node.RightNode == null)
-                {
-                    node.RightNode = new NodeOfTree(index);
-                }
-                else
-                {
-                    AddTo(node.RightNode, index);
-                }
-            }
         }
 
         /// <summary>
@@ -281,9 +254,7 @@ namespace Algoritms.Lesson4
         {
             NodeOfTree current;
 
-            NodeOfTree parent;
-
-            current = FindWithParent(out parent, index);
+            current = FindWithParent(out NodeOfTree parent, index);
 
             if (current == null)
             {
@@ -417,7 +388,7 @@ namespace Algoritms.Lesson4
 
             Console.WriteLine($"{str}");
 
-            PrintTreePrefixBypass(RootNode);
+            PrefixBypass(RootNode);
 
             Console.WriteLine($"Чтобы продолжить нажмите любую клавишу");
 
@@ -428,15 +399,15 @@ namespace Algoritms.Lesson4
         /// Префиксный обход дерева рекурсией с выводом в консоль элементов
         /// </summary>
         /// <param name="node">NodeOfTree string строковая переменная - попытка вывести дерево со ступенями</param>
-        private void PrintTreePrefixBypass(NodeOfTree node)
+        private void PrefixBypass(NodeOfTree node)
         {
             if (node != null)
             {
                 Console.WriteLine(String.Format($"{node.Index}\t{node.Data}"));
 
-                PrintTreePrefixBypass(node.LeftNode);
+                PrefixBypass(node.LeftNode);
 
-                PrintTreePrefixBypass(node.RightNode);
+                PrefixBypass(node.RightNode);
             }
         }
 
@@ -449,7 +420,7 @@ namespace Algoritms.Lesson4
 
             Console.WriteLine($"{str}");
 
-            PrintTreePostfixBypass(RootNode);
+            PostfixBypass(RootNode);
 
             Console.WriteLine($"Чтобы продолжить нажмите любую клавишу");
 
@@ -460,13 +431,13 @@ namespace Algoritms.Lesson4
         /// Постфиксный обход дерева рекурсией с выводом в консоль элементов
         /// </summary>
         /// <param name="node">NodeOfTree string строковая переменная - попытка вывести дерево со ступенями</param>        
-        private void PrintTreePostfixBypass(NodeOfTree node)
+        private void PostfixBypass(NodeOfTree node)
         {
             if (node != null)
             {
-                PrintTreePostfixBypass(node.LeftNode);
+                PostfixBypass(node.LeftNode);
 
-                PrintTreePostfixBypass(node.RightNode);
+                PostfixBypass(node.RightNode);
 
                 Console.WriteLine(String.Format($"{node.Index}\t{node.Data}"));
             }
@@ -481,7 +452,7 @@ namespace Algoritms.Lesson4
 
             Console.WriteLine($"{str}");
 
-            PrintTreeInfixBypass(RootNode);
+            InfixBypass(RootNode);
 
             Console.WriteLine($"Чтобы продолжить нажмите любую клавишу");
 
@@ -492,18 +463,155 @@ namespace Algoritms.Lesson4
         /// Инфиксный обход дерева рекурсией с выводом в консоль элементов
         /// </summary>
         /// <param name="node">NodeOfTree string строковая переменная - попытка вывести дерево со ступенями</param>
-        private void PrintTreeInfixBypass(NodeOfTree node)
+        private void InfixBypass(NodeOfTree node)
         {
             if (node != null)
             {
-                PrintTreeInfixBypass(node.LeftNode);
+                InfixBypass(node.LeftNode);
 
                 if (node.Data != null)
                 {
                     Console.WriteLine(string.Format($"{node.Index}\t{node.Data}"));
                 }
 
-                PrintTreeInfixBypass(node.RightNode);
+                InfixBypass(node.RightNode);
+            }
+        }
+
+        /// <summary>
+        /// Метод поиска в ширину
+        /// </summary>
+        /// <param name="index">int ключ для поиска</param>
+        /// <returns>object значение - результат поиска</returns>
+        public object SerchByBFS(int index)
+        {
+            Queue<NodeOfTree> queue = new Queue<NodeOfTree>();
+
+            queue.Enqueue(RootNode);
+
+            while (queue.Count != 0)
+            {
+                {//контроль состояния очереди
+
+                    List<NodeOfTree> list = queue.ToList();
+
+                    Console.WriteLine($"Текущее состояние очереди");
+
+                    foreach (NodeOfTree node in list)
+                    {
+                        Console.Write(" " + node.Index);
+                    }
+                    Console.WriteLine();
+
+                    Console.WriteLine("Нажмите любую клавишу...");
+
+                    Console.ReadKey();
+                }
+                NodeOfTree nod = queue.Dequeue();
+
+                if (index == nod.Index)
+                {
+                    return nod.Data;
+                }
+
+                if (nod.LeftNode != null)
+                {
+                    queue.Enqueue(nod.LeftNode);
+                }
+                if (nod.RightNode != null)
+                {
+                    queue.Enqueue(nod.RightNode);
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Метод поиска в глубину
+        /// </summary>
+        /// <param name="index">int ключ для поиска</param>
+        /// <returns>object значение - результат поиска</returns>
+        public object SerchByDFS(int index)
+        {
+            Stack<NodeOfTree> stack = new Stack<NodeOfTree>();
+
+            stack.Push(RootNode);
+
+            while (stack.Count != 0)
+            {
+                {//контроль состояния стека
+
+                    List<NodeOfTree> list = stack.ToList();
+
+                    Console.WriteLine("Текущее состояние стека");
+
+                    foreach (NodeOfTree node in list)
+                    {
+                        Console.Write(" " + node.Index);
+                    }
+                    Console.WriteLine();
+
+                    Console.WriteLine("Нажмите любую клавишу...");
+
+                    Console.ReadKey();
+                }
+                NodeOfTree nod = stack.Pop();
+
+                if (index == nod.Index)
+                {
+                    return nod.Data;
+                }
+
+                if (nod.LeftNode != null)
+                {
+                    stack.Push(nod.RightNode);
+                }
+                if (nod.RightNode != null)
+                {
+                    stack.Push(nod.LeftNode);
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Метод рекурсивно обходит дерево и выводит индексы в консоль
+        /// </summary>
+        /// <param name="prefix">string префикс</param>
+        /// <param name="node">NodeOfTree текущий узел</param>
+        public void WriteAllLines(string prefix, NodeOfTree node)
+        {
+            if (node == null)
+            {
+                return;
+            }
+            if (node == RootNode)
+            {
+                Console.WriteLine(node.Index + " корень");
+            }
+            List<NodeOfTree> childs = new List<NodeOfTree>();
+
+            if (node.LeftNode == null && node.RightNode == null)
+            {
+                return;
+            }
+            if (node.RightNode == null && node.LeftNode != null)
+            {
+                childs.Add(node.LeftNode);
+            }
+            if (node.RightNode != null && node.LeftNode == null)
+            {
+                childs.Add(node.RightNode);
+            }
+            childs.Add(node.LeftNode);
+
+            childs.Add(node.RightNode);
+
+            foreach (NodeOfTree child in childs)
+            {
+                Console.WriteLine(prefix + child.Index);
+
+                WriteAllLines(prefix + "_", child);
             }
         }
     }

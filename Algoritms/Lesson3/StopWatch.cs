@@ -7,7 +7,7 @@ namespace Algoritms.Lesson3
     /// <summary>
     /// Микросекундомер
     /// </summary>
-    internal class StopWatch
+    public class StopWatch
     {
         /// <summary>
         /// Поле начальное время

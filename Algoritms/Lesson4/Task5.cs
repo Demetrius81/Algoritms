@@ -6,15 +6,19 @@ namespace Algoritms.Lesson4
 {
     class Task5 : ITask
     {
-        private string _taskNumber = "5";
+        private readonly string _taskNumber = "5";
 
         public string TaskNumber { get => _taskNumber; }
 
-        private string _taskName = "Работа с бинарным деревом поиска";
+        private readonly string _taskName = $"Практическая работа 4. Работа с бинарным деревом поиска\t\t\t\t\t- задача 5";
 
         public string TaskName { get => _taskName; }
 
-
+        /// <summary>
+        /// Метод симуляции поступления данных извне. Генерирует сортированный список данных указанной длины
+        /// </summary>
+        /// <param name="count">int длина списка данных</param>
+        /// <returns>SortedDictionary<int, object> список данных</returns>
         private SortedDictionary<int, object> DataGenerate(int count)
         {
             SortedDictionary<int, object> sDict = new SortedDictionary<int, object>();
@@ -30,11 +34,11 @@ namespace Algoritms.Lesson4
         {
             Tree tree = new Tree();
 
-            int count = 10; //задаем размер дерева
+            int count = 15; //задаем размер массива данных
 
             SortedDictionary<int, object> sDict = DataGenerate(count);
 
-            tree.BuildTreeByHands(sDict);
+            tree.BuildTree(sDict);
 
             tree.PrintTreePrefixBypass("Префиксный обход дерева. Хорош для копирования");
 
@@ -42,7 +46,7 @@ namespace Algoritms.Lesson4
 
             tree.PrintTreeInfixBypass("Инфиксный обход дерева. Хорош для сортировки");
 
-            tree.Add(12, "goooooooooo");
+            tree.Add(13, "goooooooooo");
 
             tree.PrintTreeInfixBypass($"Добавлен элемент по индексом 12. Размер дерева {tree.Count}");
 
@@ -54,11 +58,7 @@ namespace Algoritms.Lesson4
 
             tree.PrintTreeInfixBypass($"Удален элемент по индексом 8. Размер дерева {tree.Count}");
 
-            tree.Add(11);
-
-            tree.PrintTreeInfixBypass($"Добавлен элемент по индексом 11 без данных. Размер дерева {tree.Count}");
-
-            tree.Add(10, "yaaaaaaaaaaa");
+            tree.Add(17, "yaaaaaaaaaaa");
 
             tree.PrintTreeInfixBypass($"Добавлен элемент по индексом 10. Размер дерева {tree.Count}");
 
