@@ -14,6 +14,30 @@ namespace Task
     internal class Fibonacci
     {
         /// <summary>
+        /// Метод выводит результаты расчетов
+        /// </summary>
+        public void ResultOutput()
+        {
+            Console.WriteLine("Введите длинну ряда чисел Фибоначчи");
+
+            int temp = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Ряд Фибоначчи циклическим методом:");
+
+            foreach (var item in FibonacciCalculateCycle(temp))
+            {
+                Console.WriteLine($" {item}");
+            }
+
+            Console.WriteLine("Ряд Фибоначчи рекурсивным методом:");
+
+            foreach (var item in FibonacciCalculateRecursive(temp))
+            {
+                Console.WriteLine($" {item}");
+            }
+        }
+
+        /// <summary>
         /// Расчет ряда Фибоначчи до заданного числа рекурсивным методом
         /// </summary>
         /// <param name="n">
@@ -22,7 +46,7 @@ namespace Task
         /// <returns>
         /// List<long> ряд Фибоначчи
         /// </returns>
-        public List<long> FibonacciCalculateRecursive(long n)
+        internal List<long> FibonacciCalculateRecursive(long n)
         {
             List<long> listFibonacci = new List<long>();
 
@@ -54,7 +78,7 @@ namespace Task
         /// <returns>
         /// long[] ряд Фибоначчи
         /// </returns>
-        public long[] FibonacciCalculateCycle(int n)
+        internal long[] FibonacciCalculateCycle(int n)
         {
             long[] rowFibonacci = new long[n];
 

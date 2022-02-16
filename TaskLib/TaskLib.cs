@@ -4,7 +4,7 @@ using TaskInt;
 namespace Task
 {
     public abstract class BaseTask : ITask
-    {        
+    {
         public abstract string TaskNumber { get; }
                 
         public abstract string TaskName { get; }

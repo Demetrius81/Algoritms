@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using Task;
 using TaskInt;
 using System.Reflection;
 
@@ -10,47 +8,33 @@ namespace Algoritms
     class Program
     {
         private static readonly List<ITask> _tasks = new List<ITask>();
-        //{
-        //    { new Task1() },
-        //    { new Task2() },
-        //    { new Task3() },
-        //    { new Task4() },
-        //    { new Task5() },
-        //    { new Task6() },
-        //    { new Task7() }
-        //};
 
         static void Main(string[] args)
         {
-            //TaskSelection();
-            Tasks();
+            TaskSelection();
         }
 
+        /// <summary>
+        /// Метод при помощи механизмов класса System.Reflection динамически подключает библиотеку классов
+        /// </summary>
         private static void Tasks()
         {
             Assembly asm = Assembly.LoadFrom(@"TaskLib.dll");
 
             Type[] types = asm.GetTypes();
 
-
-
-
-
-            Console.WriteLine(asm.FullName);
-
-            Console.WriteLine();
-
             foreach (Type type in types)
             {
-                Console.WriteLine(type.FullName);
+                Attribute attr = type.GetCustomAttribute(typeof(Task.TaskAttribute), false);
+
+                if (attr != null)
+                {
+                    object obj = Activator.CreateInstance(type);
+
+                    _tasks.Add(obj as ITask);
+                }
             }
-
-            Console.ReadKey();
         }
-
-
-
-
 
         /// <summary>
         /// Метод запускает цикл по выбору и выполнению задачи
@@ -58,6 +42,8 @@ namespace Algoritms
         private static void TaskSelection()
         {
             string userChoice = "";
+
+            Tasks();
 
             while (userChoice != "0")
             {

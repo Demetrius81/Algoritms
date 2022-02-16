@@ -5,6 +5,7 @@ using TaskInt;
 
 namespace Task
 {
+    [Task]
     public class Task6 : BaseTask
     {
         private readonly string _taskNumber = "6";

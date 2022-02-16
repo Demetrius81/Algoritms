@@ -5,6 +5,7 @@ using TaskInt;
 
 namespace Task
 {
+    [Task]
     public class Task2 : BaseTask
     {
         private readonly string _taskNumber = "2";
@@ -19,23 +20,7 @@ namespace Task
         {
             Fibonacci fibonacci = new Fibonacci();
 
-            Console.WriteLine("Введите длинну ряда чисел Фибоначчи");
-
-            int temp = Convert.ToInt32(Console.ReadLine());
-
-            Console.WriteLine("Ряд Фибоначчи циклическим методом:");
-
-            foreach (var item in fibonacci.FibonacciCalculateCycle(temp))
-            {
-                Console.WriteLine($" {item}");
-            }
-
-            Console.WriteLine("Ряд Фибоначчи рекурсивным методом:");
-
-            foreach (var item in fibonacci.FibonacciCalculateRecursive(temp))
-            {
-                Console.WriteLine($" {item}");
-            }
+            fibonacci.ResultOutput();
         }
     }
 }

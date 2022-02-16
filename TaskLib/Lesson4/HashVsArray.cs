@@ -17,13 +17,17 @@ namespace Task
         /// <returns>string[] массив строк</returns>
         private string[] GenerateArray(int lenght)
         {
+            const double variableToFill = 42.132;
+
+            const double variableToFillOneMore = 7.003;
+
             Random random = new Random();
 
             string[] arr = new string[lenght];
 
             for (int i = 0; i < arr.Length; i++)
             {
-                arr[i] = (-42.132 + (random.NextDouble() * (7.003 + 42.132))).ToString();
+                arr[i] = (-variableToFill + (random.NextDouble() * (variableToFillOneMore + variableToFill))).ToString();
             }
             return arr;
         }
@@ -35,13 +39,17 @@ namespace Task
         /// <returns>HashSet<string> список</returns>
         private HashSet<string> GenerateHashSet(int lenght)
         {
+            const double variableToFill = 42.132;
+
+            const double variableToFillOneMore = 7.003;
+
             Random random = new Random();
 
             HashSet<string> hs = new HashSet<string>();
 
             for (int i = 0; i < lenght; i++)
             {
-                hs.Add((-42.132 + (random.NextDouble() * (7.003 + 42.132))).ToString());
+                hs.Add((-variableToFill + (random.NextDouble() * (variableToFillOneMore + variableToFill))).ToString());
             }
             return hs;
         }
