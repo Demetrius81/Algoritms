@@ -9,28 +9,44 @@ namespace Algoritms
 {
     class Program
     {
-        private static readonly List<ITask> _tasks = new List<ITask>()
-        {
-            { new Task1() },
-            { new Task2() },
-            { new Task3() },
-            { new Task4() },
-            { new Task5() },
-            { new Task6() },
-            { new Task7() }
-        };
+        private static readonly List<ITask> _tasks = new List<ITask>();
+        //{
+        //    { new Task1() },
+        //    { new Task2() },
+        //    { new Task3() },
+        //    { new Task4() },
+        //    { new Task5() },
+        //    { new Task6() },
+        //    { new Task7() }
+        //};
 
         static void Main(string[] args)
         {
-            TaskSelection();
-            //Tasks();
+            //TaskSelection();
+            Tasks();
         }
 
-        //private static void Tasks()
-        //{
-       
-        //    Console.ReadKey();
-        //}
+        private static void Tasks()
+        {
+            Assembly asm = Assembly.LoadFrom(@"TaskLib.dll");
+
+            Type[] types = asm.GetTypes();
+
+
+
+
+
+            Console.WriteLine(asm.FullName);
+
+            Console.WriteLine();
+
+            foreach (Type type in types)
+            {
+                Console.WriteLine(type.FullName);
+            }
+
+            Console.ReadKey();
+        }
 
 
 
