@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.32106.194
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Algoritms", "Algoritms\Algoritms.csproj", "{D5E53530-A18F-4752-B7C0-83A0322E8375}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskLib", "TaskLib\TaskLib.csproj", "{50BB3E05-79E7-46DD-ABD3-ACFB46FC526D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskInterfaces", "TaskInterfaces\TaskInterfaces.csproj", "{3C36171A-FF46-4E46-AB88-4B77DD99FBA5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{D5E53530-A18F-4752-B7C0-83A0322E8375}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5E53530-A18F-4752-B7C0-83A0322E8375}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5E53530-A18F-4752-B7C0-83A0322E8375}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50BB3E05-79E7-46DD-ABD3-ACFB46FC526D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50BB3E05-79E7-46DD-ABD3-ACFB46FC526D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50BB3E05-79E7-46DD-ABD3-ACFB46FC526D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50BB3E05-79E7-46DD-ABD3-ACFB46FC526D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C36171A-FF46-4E46-AB88-4B77DD99FBA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C36171A-FF46-4E46-AB88-4B77DD99FBA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C36171A-FF46-4E46-AB88-4B77DD99FBA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C36171A-FF46-4E46-AB88-4B77DD99FBA5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Algoritms.Lesson3
+namespace Task
 {
     public class PointsTests
     {
@@ -13,6 +13,10 @@ namespace Algoritms.Lesson3
         /// <returns>PointDoubleCla[] заполненный массив</returns>
         private PointDoubleClass[] PointsArrayCla(int count)
         {
+            const double variableToFill = 42.132;
+
+            const double variableToFillOneMore = 7.003;
+
             PointDoubleClass[] points = new PointDoubleClass[count];
 
             Random random = new Random();
@@ -21,9 +25,9 @@ namespace Algoritms.Lesson3
             {
                 points[i] = new PointDoubleClass();
 
-                points[i].X = -42.132 + (random.NextDouble() * (7.003 + 42.132));
+                points[i].X = -variableToFill + (random.NextDouble() * (variableToFillOneMore + variableToFill));
 
-                points[i].Y = -42.132 + (random.NextDouble() * (7.003 + 42.132));
+                points[i].Y = -variableToFill + (random.NextDouble() * (variableToFillOneMore + variableToFill));
             }
             return points;
         }
@@ -35,15 +39,19 @@ namespace Algoritms.Lesson3
         /// <returns>PointDoubleStr[] заполненный массив</returns>
         private PointDoubleStructure[] PointsArrayStr(int count)
         {
+            const double variableToFill = 42.132;
+
+            const double variableToFillOneMore = 7.003;
+
             PointDoubleStructure[] points = new PointDoubleStructure[count];
 
             Random random = new Random();
 
             for (int i = 0; i < count; i++)
             {
-                points[i].X = -42.132 + random.NextDouble() * (7.003 + 42.132);
+                points[i].X = -variableToFill + random.NextDouble() * (variableToFillOneMore + variableToFill);
 
-                points[i].Y = -42.132 + random.NextDouble() * (7.003 + 42.132);
+                points[i].Y = -variableToFill + random.NextDouble() * (variableToFillOneMore + variableToFill);
             }
             return points;
         }

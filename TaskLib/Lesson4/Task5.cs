@@ -1,18 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TaskInt;
 
-namespace Algoritms.Lesson4
+namespace Task
 {
-    class Task5 : ITask
+    [Task]
+    public class Task5 : BaseTask
     {
         private readonly string _taskNumber = "5";
 
-        public string TaskNumber { get => _taskNumber; }
+        public override string TaskNumber { get => _taskNumber; }
 
         private readonly string _taskName = $"Практическая работа 4. Работа с бинарным деревом поиска\t\t\t\t\t- задача 5";
 
-        public string TaskName { get => _taskName; }
+        public override string TaskName { get => _taskName; }
 
         /// <summary>
         /// Метод симуляции поступления данных извне. Генерирует сортированный список данных указанной длины
@@ -30,7 +32,7 @@ namespace Algoritms.Lesson4
             return sDict;
         }
 
-        public void TaskResultOutput()
+        public override void TaskResultOutput()
         {
             Tree tree = new Tree();
 

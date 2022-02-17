@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Algoritms.Lesson4
+namespace Task
 {
     /// <summary>
     /// Клласс бинарное дерево поиска
@@ -46,6 +46,7 @@ namespace Algoritms.Lesson4
 
                 data.Add(sDict[key]);
             }
+
             AddListOfNodes(keys, data);
         }
 
@@ -57,6 +58,8 @@ namespace Algoritms.Lesson4
         /// <returns></returns>
         private NodeOfTree AddListOfNodes(List<int> keys, List<object> data)
         {
+            Count = keys.Count;
+
             int n = keys.Count;
 
             NodeOfTree newNode;
@@ -90,8 +93,6 @@ namespace Algoritms.Lesson4
                     nRight = n - nMed;
                 }
                 newNode = new NodeOfTree(keys[nMed - 1], data[nMed - 1]);
-
-                Count++;
 
                 if (RootNode == null)
                 {
@@ -492,8 +493,9 @@ namespace Algoritms.Lesson4
             while (queue.Count != 0)
             {
                 {//контроль состояния очереди
+                    List<NodeOfTree> list = new List<NodeOfTree>();
 
-                    List<NodeOfTree> list = queue.ToList();
+                    list = queue.ToList();
 
                     Console.WriteLine($"Текущее состояние очереди");
 
@@ -540,8 +542,9 @@ namespace Algoritms.Lesson4
             while (stack.Count != 0)
             {
                 {//контроль состояния стека
+                    List<NodeOfTree> list = new List<NodeOfTree>();
 
-                    List<NodeOfTree> list = stack.ToList();
+                    list = stack.ToList();
 
                     Console.WriteLine("Текущее состояние стека");
 
@@ -613,6 +616,54 @@ namespace Algoritms.Lesson4
 
                 WriteAllLines(prefix + "_", child);
             }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /// <summary>
+        /// Метод обхода в ширину
+        /// </summary>
+        /// <returns>List<object> список ключей для вывода в консоль</returns>
+        public List<object> BypassBFS()
+        {
+            List<object> list = new List<object>();
+
+            Queue<NodeOfTree> queue = new Queue<NodeOfTree>();
+
+            queue.Enqueue(RootNode);
+
+            while (queue.Count != 0)
+            {
+                NodeOfTree nod = queue.Dequeue();
+
+                list.Add(nod.Index);
+
+                if (nod.LeftNode != null)
+                {
+                    queue.Enqueue(nod.LeftNode);
+                }
+                if (nod.RightNode != null)
+                {
+                    queue.Enqueue(nod.RightNode);
+                }
+            }
+            return list;
         }
     }
 }

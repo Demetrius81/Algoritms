@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 
-namespace Algoritms.Lesson4
+namespace Task
 {
     /// <summary>
     /// Тест Хеш список против массива, скорость поиска значения значения
@@ -17,13 +17,17 @@ namespace Algoritms.Lesson4
         /// <returns>string[] массив строк</returns>
         private string[] GenerateArray(int lenght)
         {
+            const double variableToFill = 42.132;
+
+            const double variableToFillOneMore = 7.003;
+
             Random random = new Random();
 
             string[] arr = new string[lenght];
 
             for (int i = 0; i < arr.Length; i++)
             {
-                arr[i] = (-42.132 + (random.NextDouble() * (7.003 + 42.132))).ToString();
+                arr[i] = (-variableToFill + (random.NextDouble() * (variableToFillOneMore + variableToFill))).ToString();
             }
             return arr;
         }
@@ -35,13 +39,17 @@ namespace Algoritms.Lesson4
         /// <returns>HashSet<string> список</returns>
         private HashSet<string> GenerateHashSet(int lenght)
         {
+            const double variableToFill = 42.132;
+
+            const double variableToFillOneMore = 7.003;
+
             Random random = new Random();
 
             HashSet<string> hs = new HashSet<string>();
 
             for (int i = 0; i < lenght; i++)
             {
-                hs.Add((-42.132 + (random.NextDouble() * (7.003 + 42.132))).ToString());
+                hs.Add((-variableToFill + (random.NextDouble() * (variableToFillOneMore + variableToFill))).ToString());
             }
             return hs;
         }
@@ -52,23 +60,21 @@ namespace Algoritms.Lesson4
         /// <param name="lenght">int количество элементов</param>
         private void Test(int lenght)
         {
-            Lesson3.StopWatch swHs = new Lesson3.StopWatch();
+            StopWatch swHs = new StopWatch();
 
-            Lesson3.StopWatch swArr = new Lesson3.StopWatch();
+            StopWatch swArr = new StopWatch();
 
             HashSet<string> hs = GenerateHashSet(lenght);
 
             string[] arr = GenerateArray(lenght);
 
             swHs.Start();
-
-            bool isThereInList = hs.Contains(" ");
+            _ = hs.Contains(" ");
 
             swHs.Stop();
 
             swArr.Start();
-
-            bool isThereInArray = arr.Contains(" ");
+            _ = arr.Contains(" ");
 
             swArr.Stop();
 

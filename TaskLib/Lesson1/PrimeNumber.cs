@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Algoritms.Lesson1
+namespace Task
 {
     internal class PrimeNumber
     {

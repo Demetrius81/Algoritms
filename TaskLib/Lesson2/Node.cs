@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Algoritms.Lesson2
+namespace Task
 {
     internal class Node
     {

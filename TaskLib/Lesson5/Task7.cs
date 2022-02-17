@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace Algoritms.Lesson5
+
+namespace Task
 {
-    class Task7 : ITask
+    [Task]
+    public class Task7 : BaseTask
     {
         private readonly string _taskNumber = "7";
-
-        public string TaskNumber { get => _taskNumber; }
+                
+        public override string TaskNumber { get => _taskNumber; }
 
         private readonly string _taskName = $"Практическая работа 5. Работа с бинарным деревом поиска. Поиск в ширину и в глубину\t- задача 7";
-
-        public string TaskName { get => _taskName; }
+        
+        public override string TaskName { get => _taskName; }
 
         /// <summary>
         /// Метод симуляции поступления данных извне. Генерирует сортированный список данных указанной длины
@@ -30,9 +31,9 @@ namespace Algoritms.Lesson5
             return sDict;
         }
 
-        public void TaskResultOutput()
+        public override void TaskResultOutput()
         {
-            Lesson4.Tree tree = new Lesson4.Tree();
+            Tree tree = new Tree();
 
             int count = 15; //задаем размер массива данных
 
@@ -43,9 +44,11 @@ namespace Algoritms.Lesson5
             PrintTree(tree);
 
             SerchInTree(tree);
+
+            Console.ReadKey();
         }
 
-        private void SerchInTree(Lesson4.Tree tree)
+        private void SerchInTree(Tree tree)
         {
             while (true)
             {
@@ -91,7 +94,7 @@ namespace Algoritms.Lesson5
         /// Метод производит взаимодействие с пользователем и инициализирует процедуру поиска DFS
         /// </summary>
         /// <param name="tree">Tree Дерево поиска</param>
-        private void SearchDFS(Lesson4.Tree tree)
+        private void SearchDFS(Tree tree)
         {
             Console.Clear();
 
@@ -131,7 +134,7 @@ namespace Algoritms.Lesson5
         /// Метод производит взаимодействие с пользователем и инициализирует процедуру поиска DFS
         /// </summary>
         /// <param name="tree">Tree Дерево поиска</param>
-        private void SearchBFS(Lesson4.Tree tree)
+        private void SearchBFS(Tree tree)
         {
             Console.Clear();
 
@@ -171,7 +174,7 @@ namespace Algoritms.Lesson5
         /// Метод выводит дерево в консоль
         /// </summary>
         /// <param name="tree">Lesson4.Tree дерево</param>
-        private void PrintTree(Lesson4.Tree tree)
+        private void PrintTree(Tree tree)
         {
             Console.Clear();
 

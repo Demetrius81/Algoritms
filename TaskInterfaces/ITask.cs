@@ -1,20 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using Task;
 
-namespace Algoritms
+namespace TaskInt
 {
-    interface ITask
+    public interface ITask
     {
         /// <summary>
         /// Номер задачи
         /// </summary>
-        string TaskNumber { get;}
+        string TaskNumber { get; }
 
         /// <summary>
         /// Название задачи
         /// </summary>
-        string TaskName { get;}
+        string TaskName { get; }
 
         /// <summary>
         /// Вывод результатов работы
