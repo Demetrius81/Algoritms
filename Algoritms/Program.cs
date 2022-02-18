@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using TaskInt;
+
 using System.Reflection;
 
 namespace Algoritms
@@ -25,7 +25,7 @@ namespace Algoritms
 
             foreach (Type type in types)
             {
-                Attribute attr = type.GetCustomAttribute(typeof(Task.TaskAttribute), false);
+                Attribute attr = type.GetCustomAttribute(typeof(Algoritms.TaskAttribute), false);
 
                 if (attr != null)
                 {

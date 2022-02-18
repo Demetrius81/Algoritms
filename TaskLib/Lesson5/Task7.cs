@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 
-namespace Task
+namespace Algoritms
 {
     [Task]
     public class Task7 : BaseTask

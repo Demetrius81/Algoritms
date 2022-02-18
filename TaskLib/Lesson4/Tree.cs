@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Task
+namespace Algoritms
 {
     /// <summary>
     /// Клласс бинарное дерево поиска
