@@ -6,6 +6,10 @@ namespace Algoritms
 {
     class NumberOfOptions
     {
+        /// <summary>
+        /// Метод выводит в консоль результаты вычислений количества вариантов для числа n
+        /// </summary>
+        /// <param name="n">Длина массива</param>
         public void NumberOfOptionsOutput(int n = 16)
         {
             double[] results = TestNumberOfOptionsLogicOnArray(out double[] array, n);
@@ -19,6 +23,11 @@ namespace Algoritms
             Console.ReadKey();
         }
 
+        /// <summary>
+        /// Метод несет в себе логику подсчета количества вариантов для числа n
+        /// </summary>
+        /// <param name="n">double число для подсчета количества вариантов</param>
+        /// <returns>double результат работы метода</returns>
         private double NumberOfOptionsLogic(double n)
         {
             double numberOfOptions = 1;
@@ -34,6 +43,12 @@ namespace Algoritms
             return numberOfOptions;
         }
 
+        /// <summary>
+        /// Метод производит тест логики на выбранной последовательности
+        /// </summary>
+        /// <param name="array">Массив исходных чисел</param>
+        /// <param name="length">Длина массива</param>
+        /// <returns>Массив результатов вычислений</returns>
         private double[] TestNumberOfOptionsLogicOnArray(out double[] array, int length = 100)
         {
             double[] arr = new double[length];
@@ -44,11 +59,7 @@ namespace Algoritms
             {
                 arr[i] = i + 1;
             }
-            
-            for (int i = 0; i < length; i++)
-            {
-                results[i] = NumberOfOptionsLogic(arr[i]);
-            }
+                       
             for (int i = 0; i < length; i++)
             {
                 results[i] = NumberOfOptionsLogic(arr[i]);
