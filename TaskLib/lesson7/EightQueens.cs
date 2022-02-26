@@ -9,17 +9,17 @@ namespace Algoritms
         /// <summary>
         /// Размер игрового поля
         /// </summary>
-        private const int FIELD_DIMENTION = 8;
+        protected const int FIELD_DIMENTION = 8;
 
         /// <summary>
         /// Количество ферзей
         /// </summary>
-        private const int QUEEN_COUNT = 8;
+        protected const int QUEEN_COUNT = 8;
 
         /// <summary>
         /// Игровое поле
         /// </summary>
-        private int[,] _gameField;
+        protected int[,] _gameField;
 
         /// <summary>
         /// Конструктор инициализирует игровое поле
@@ -78,7 +78,7 @@ namespace Algoritms
         /// Метод выводит на экран игровое поле
         /// </summary>
         /// <param name="array">Икровое поле</param>
-        private void PrintArray(int[,] array)
+        protected void PrintArray(int[,] array)
         {
             Console.Clear();
             Console.WriteLine("   A   B   C   D   E   F   G   H");
