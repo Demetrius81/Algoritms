@@ -1,7 +1,7 @@
 ﻿using System;
-using Task;
 
-namespace TaskInt
+
+namespace Algoritms
 {
     public interface ITask
     {

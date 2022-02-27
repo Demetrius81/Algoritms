@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using TaskInt;
 
-namespace Task
+
+namespace Algoritms
 {
     [Task]
     public class Task5 : BaseTask

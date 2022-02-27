@@ -1,7 +1,7 @@
 ﻿using System;
-using TaskInt;
 
-namespace Task
+
+namespace Algoritms
 {
     [Task]
     public class Task1 : BaseTask

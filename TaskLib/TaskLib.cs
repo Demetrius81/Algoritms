@@ -1,7 +1,7 @@
 ﻿using System;
-using TaskInt;
 
-namespace Task
+
+namespace Algoritms
 {
     public abstract class BaseTask : ITask
     {

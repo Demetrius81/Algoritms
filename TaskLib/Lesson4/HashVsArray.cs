@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 
-namespace Task
+namespace Algoritms
 {
     /// <summary>
     /// Тест Хеш список против массива, скорость поиска значения значения
