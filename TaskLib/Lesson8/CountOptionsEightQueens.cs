@@ -119,13 +119,13 @@ namespace Algoritms
         /// <returns>bool возврашает ответ на вопрои их там нет?</returns>
         private bool CheckCrossQueensMainDiagonal()
         {
-            bool isNoThere = false;
+            bool isNoThere = true;
 
             for (int i = 1; i <= QUEEN_COUNT; i++)
             {
-                if ((i == QueenPosition[i]) || (i + QueenPosition[i] == 9))
+                if ((i == QueenPosition[i]) | (i + QueenPosition[i] == 9))
                 {
-                    isNoThere = true;
+                    isNoThere = false;
 
                     break;
                 }
@@ -176,39 +176,41 @@ namespace Algoritms
                                             CountNotCrossAllQueens = 0;
 
                                             CheckCrossQueens();
-
+                                            Console.Write(CountNotCrossAllQueens);
+                                            //Console.WriteLine(NumberNotCrossAllQueens);
                                             if (CountNotCrossAllQueens == NumberNotCrossAllQueens)
                                             {
                                                 bool b = CheckCrossQueensMainDiagonal();
 
-                                                b = false;
+                                                //b = false;
 
                                                 if (!b)
                                                 {
                                                     count++;
-
+                                                    Console.WriteLine(count);
                                                     QueenPosition[0] = count;
 
                                                     AllVariants.Add(QueenPosition);
 
-                                                    for (int i = 1; i <= FIELD_DIMENTION; i++)
-                                                    {
-                                                        Console.Write(count);
+                                                    //for (int i = 1; i <= FIELD_DIMENTION; i++)
+                                                    //{
+                                                    //    Console.Write(count);
 
-                                                        Console.Write("  ");
+                                                    //    Console.Write("  ");
 
-                                                        Console.Write(QueenPosition[i]);
+                                                    //    Console.Write(QueenPosition[i]);
 
-                                                        Console.Write("  ");
-                                                    }
-                                                    Console.WriteLine();
+                                                    //    Console.Write("  ");
+                                                    //}
+                                                    //Console.WriteLine();
                                                 }
                                             }
 
 
 
 
-                                        }                                        
+                                        }
+                                        Console.WriteLine();
                                     }
                                 }
                             }
@@ -223,6 +225,14 @@ namespace Algoritms
         {
             EnumerationOfAllOptions();
 
+            foreach (var item in AllVariants)
+            {
+                for (int i = 0; i < item.Length; i++)
+                {
+                    Console.Write(item[i]);
+                }
+                Console.WriteLine();
+            }
             //Console.WriteLine(AllVariants.Count + 1);
         }
 
