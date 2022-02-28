@@ -7,11 +7,6 @@ namespace Algoritms
     class CountOptionsEightQueens : EightQueens
     {
         /// <summary>
-        /// Список со всеми вариантами расстановки ферзей
-        /// </summary>
-        private List<int[]> _allVariants = new List<int[]>();
-
-        /// <summary>
         /// Массив с координатами расположения ферзей
         /// </summary>
         private int[] _queenPosition;
@@ -29,8 +24,7 @@ namespace Algoritms
         private int NumberNotCrossAllQueens { get => _numberNotCrossAllQueens; }
         private int CountNotCrossAllQueens { get => _countNotCrossAllQueens; set => _countNotCrossAllQueens = value; }
         private int[] QueenPosition { get => _queenPosition; set => _queenPosition = value; }
-        private List<int[]> AllVariants { get => _allVariants; set => _allVariants = value; }
-
+        
         /// <summary>
         /// Конструктор
         /// </summary>
@@ -59,11 +53,12 @@ namespace Algoritms
             return numberNotCross;
         }
 
+        #region реализовать позже
         /// <summary>
         /// Метод расставляет ферзей на игровом поле в соответствии с координатами
         /// </summary>
         /// <returns>int[,] игровое поле</returns>
-        private int[,] SetQueenOnField()
+        private int[,] SetQueenOnField(int[] Queenpos)
         {
             int[,] gameField = new int[FIELD_DIMENTION, FIELD_DIMENTION];
 
@@ -71,7 +66,7 @@ namespace Algoritms
             {
                 for (int j = 0; j < gameField.GetLength(1); j++)
                 {
-                    if (QueenPosition[i + 1] == j)
+                    if (Queenpos[i + 1] == j)
                     {
                         gameField[i, j] = -1;
                     }
@@ -83,6 +78,7 @@ namespace Algoritms
             }
             return gameField;
         }
+        #endregion
 
         /// <summary>
         /// Метод считает количество непересечений ферзей
@@ -114,103 +110,53 @@ namespace Algoritms
         }
 
         /// <summary>
-        /// Метод проверяет нахождение ферзей на главных диагоналях
-        /// </summary>
-        /// <returns>bool возврашает ответ на вопрои их там нет?</returns>
-        private bool CheckCrossQueensMainDiagonal()
-        {
-            bool isNoThere = true;
-
-            for (int i = 1; i <= QUEEN_COUNT; i++)
-            {
-                if ((i == QueenPosition[i]) | (i + QueenPosition[i] == 9))
-                {
-                    isNoThere = false;
-
-                    break;
-                }
-            }
-            return isNoThere;
-        }
-
-        /// <summary>
         /// Метод осуществляет перебор всех комбинаций взаимного расположения ферзей
         /// </summary>
-        private void EnumerationOfAllOptions()
+        private int EnumerationOfAllOptions()
         {
             int count = 0;
 
-            for (int i1 = 1; i1 <= QUEEN_COUNT; i1++)
+            for (int a = 1; a <= QUEEN_COUNT; a++)
             {
-                QueenPosition[i1] = i1;
+                QueenPosition[1] = a;
 
-                for (int i2 = 1; i2 <= QUEEN_COUNT; i2++)
+                for (int b = 1; b <= QUEEN_COUNT; b++)
                 {
-                    QueenPosition[i2] = i2;
+                    QueenPosition[2] = b;
 
-                    for (int i3 = 1; i3 <= QUEEN_COUNT; i3++)
+                    for (int c = 1; c <= QUEEN_COUNT; c++)
                     {
-                        QueenPosition[i3] = i3;
+                        QueenPosition[3] = c;
 
-                        for (int i4 = 1; i4 <= QUEEN_COUNT; i4++)
+                        for (int d = 1; d <= QUEEN_COUNT; d++)
                         {
-                            QueenPosition[i4] = i4;
+                            QueenPosition[4] = d;
 
-                            for (int i5 = 1; i5 <= QUEEN_COUNT; i5++)
+                            for (int e = 1; e <= QUEEN_COUNT; e++)
                             {
-                                QueenPosition[i5] = i5;
+                                QueenPosition[5] = e;
 
-                                for (int i6 = 1; i6 <= QUEEN_COUNT; i6++)
+                                for (int f = 1; f <= QUEEN_COUNT; f++)
                                 {
-                                    QueenPosition[i6] = i6;
+                                    QueenPosition[6] = f;
 
-                                    for (int i7 = 1; i7 <= QUEEN_COUNT; i7++)
+                                    for (int g = 1; g <= QUEEN_COUNT; g++)
                                     {
-                                        QueenPosition[i7] = i7;
+                                        QueenPosition[7] = g;
 
-                                        for (int i8 = 1; i8 <= QUEEN_COUNT; i8++)
+                                        for (int h = 1; h <= QUEEN_COUNT; h++)
                                         {
-                                            QueenPosition[i8] = i8;
-
+                                            QueenPosition[8] = h;
 
                                             CountNotCrossAllQueens = 0;
 
                                             CheckCrossQueens();
-                                            Console.Write(CountNotCrossAllQueens);
-                                            //Console.WriteLine(NumberNotCrossAllQueens);
+
                                             if (CountNotCrossAllQueens == NumberNotCrossAllQueens)
                                             {
-                                                bool b = CheckCrossQueensMainDiagonal();
-
-                                                //b = false;
-
-                                                if (!b)
-                                                {
-                                                    count++;
-                                                    Console.WriteLine(count);
-                                                    QueenPosition[0] = count;
-
-                                                    AllVariants.Add(QueenPosition);
-
-                                                    //for (int i = 1; i <= FIELD_DIMENTION; i++)
-                                                    //{
-                                                    //    Console.Write(count);
-
-                                                    //    Console.Write("  ");
-
-                                                    //    Console.Write(QueenPosition[i]);
-
-                                                    //    Console.Write("  ");
-                                                    //}
-                                                    //Console.WriteLine();
-                                                }
+                                                count++;
                                             }
-
-
-
-
                                         }
-                                        Console.WriteLine();
                                     }
                                 }
                             }
@@ -218,29 +164,22 @@ namespace Algoritms
                     }
                 }
             }
+            return count;
         }
 
-
+        /// <summary>
+        /// Метод запускает расчет всех комбинаций и выводит на экран результаты расчета
+        /// </summary>
         public void RunCheck()
         {
-            EnumerationOfAllOptions();
+            Console.Clear();
 
-            foreach (var item in AllVariants)
-            {
-                for (int i = 0; i < item.Length; i++)
-                {
-                    Console.Write(item[i]);
-                }
-                Console.WriteLine();
-            }
-            //Console.WriteLine(AllVariants.Count + 1);
+            Console.WriteLine($"Идет подсчет количества вариантов методом перебора всех комбинаций...");
+
+            int count = EnumerationOfAllOptions();
+
+            Console.WriteLine($"Задача о восьми ферзях имеет {count} вариантов решений.");
+
         }
-
-
-
-
-
-
-
     }
 }
