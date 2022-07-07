@@ -32,8 +32,25 @@ namespace Algoritms
             var item = eazyStack.Pop();
             var item2 = eazyStack.Peek();
 
+            Console.WriteLine();
+
             Console.WriteLine(item);
             Console.WriteLine(item2);
+
+            Console.ReadKey(true);
+
+            var linkedStack = new LinkedStack<int>();
+
+            linkedStack.Push(10);
+            linkedStack.Push(20);
+            linkedStack.Push(30);
+            linkedStack.Push(40);
+            linkedStack.Push(50);
+
+            Console.WriteLine(linkedStack.Peek());
+            Console.WriteLine(linkedStack.Pop());
+            Console.WriteLine(linkedStack.Pop());
+            Console.WriteLine(linkedStack.Peek());
 
             Console.ReadKey(true);
         }
