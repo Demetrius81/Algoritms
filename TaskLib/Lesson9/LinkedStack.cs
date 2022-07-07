@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Algoritms
 {
-    internal class LinkedStack<T>
+    public class LinkedStack<T>
     {
         public Item<T> Head { get; set; }
         public int Count { get; set; }

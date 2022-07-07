@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Algoritms
 {
-    internal class Item<T>
+    public class Item<T>
     {
         public T Data { get; set; }
 
