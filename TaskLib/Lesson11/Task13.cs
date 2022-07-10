@@ -11,67 +11,80 @@ namespace Algoritms
 
         public override string TaskNumber { get => _taskNumber; }
 
-        private readonly string _taskName = $"Структуры данных. Множество.\t\t\t\t\t\t\t\t\t- задача 13";
+        private readonly string _taskName = $"Структуры данных. Множество.\t\t\t\t\t\t\t\t- задача 13";
 
         public override string TaskName { get => _taskName; }
 
         public override void TaskResultOutput()
         {
-            EazyStack<int> eazyStack = new EazyStack<int>();
+            Console.Clear();
 
-            eazyStack.Push(1);
-            eazyStack.Push(2);
-            eazyStack.Push(3);
-            eazyStack.Push(4);
-            eazyStack.Push(5);
-            eazyStack.Push(6);
-            eazyStack.Push(7);
-            eazyStack.Push(8);
-            eazyStack.Push(9);
+            var easySet1 = new EasySet<int>(new int[] { 1, 2, 3, 4, 5 });
+            var easySet2 = new EasySet<int>(new int[] { 4, 5, 6, 7, 8, 9 });
+            var easySet3 = new EasySet<int>(new int[] { 3, 4, 5 });
 
-            var item = eazyStack.Pop();
-            var item2 = eazyStack.Peek();
+            Console.WriteLine("Union");
+
+            foreach (var i in easySet1.Union(easySet2))
+            {
+                Console.Write(i + " ");
+            }
 
             Console.WriteLine();
 
-            Console.WriteLine(item);
-            Console.WriteLine(item2);
+            Console.WriteLine("Intersection");
 
-            Console.ReadKey(true);
+            foreach (var i in easySet1.Intersection(easySet2))
+            {
+                Console.Write(i + " ");
+            }
 
-            var linkedStack = new LinkedStack<int>();
+            Console.WriteLine();
 
-            linkedStack.Push(10);
-            linkedStack.Push(20);
-            linkedStack.Push(30);
-            linkedStack.Push(40);
-            linkedStack.Push(50);
+            Console.WriteLine("Difference A \\ B");
 
-            Console.WriteLine(linkedStack.Peek());
-            Console.WriteLine(linkedStack.Pop());
-            Console.WriteLine(linkedStack.Pop());
-            Console.WriteLine(linkedStack.Peek());
+            foreach (var i in easySet1.Difference(easySet2))
+            {
+                Console.Write(i + " ");
+            }
 
-            Console.ReadKey(true);
+            Console.WriteLine();
 
-            var arrayStack = new ArrayStack<int>(5);
+            Console.WriteLine("Difference B \\ A");
 
-            arrayStack.Push(100);
-            arrayStack.Push(200);
-            arrayStack.Push(300);
-            arrayStack.Push(400);
-            arrayStack.Push(500);
+            foreach (var i in easySet2.Difference(easySet1))
+            {
+                Console.Write(i + " ");
+            }
 
-            Console.WriteLine(arrayStack.Count);
-            Console.WriteLine(arrayStack.Peek());
-            Console.WriteLine(arrayStack.Count);
-            Console.WriteLine(arrayStack.Pop());
-            Console.WriteLine(arrayStack.Pop());
-            Console.WriteLine(arrayStack.Pop());
-            Console.WriteLine(arrayStack.Pop());
-            Console.WriteLine(arrayStack.Peek());
+            Console.WriteLine();
 
-            Console.ReadKey(true);
+            Console.WriteLine("Subset");
+
+            
+                Console.Write(easySet1.Subset(easySet3));
+           
+
+            Console.WriteLine();
+
+            Console.WriteLine("SymmetricDifference A \\ B");
+
+            foreach (var i in easySet1.SymmetricDifference(easySet2))
+            {
+                Console.Write(i + " ");
+            }
+
+            Console.WriteLine();
+
+            Console.WriteLine("SymmetricDifference B \\ A");
+
+            foreach (var i in easySet2.SymmetricDifference(easySet1))
+            {
+                Console.Write(i + " ");
+            }
+
+            Console.WriteLine();
+
         }
 
     }
