@@ -19,7 +19,14 @@ namespace Algoritms
         {
             Console.Clear();
 
-            
+            var badHashTable = new BadHashTable<int>(100);
+            badHashTable.Add(5);
+            badHashTable.Add(18);
+            badHashTable.Add(777);
+            badHashTable.Add(7);
+
+            Console.WriteLine(badHashTable.Search(6));
+            Console.WriteLine(badHashTable.Search(18));
 
             Console.WriteLine();
 
