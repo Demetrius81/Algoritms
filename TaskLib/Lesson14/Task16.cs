@@ -13,7 +13,7 @@ namespace Algoritms
 
         public override string TaskNumber { get => _taskNumber; }
 
-        private readonly string _taskName = $"Структуры данных. Красно-черное дерево.\t\t\t\t\t\t\t\t- задача 16";
+        private readonly string _taskName = $"Структуры данных. Красно-черное дерево.\t\t\t\t\t\t\t- задача 16";
 
         public override string TaskName { get => _taskName; }
 
