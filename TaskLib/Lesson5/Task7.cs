@@ -7,9 +7,9 @@ namespace Algoritms
     [Task]
     public class Task7 : BaseTask
     {
-        private readonly string _taskNumber = "7";
+        private readonly int _taskNumber = 7;
                 
-        public override string TaskNumber { get => _taskNumber; }
+        public override int TaskNumber { get => _taskNumber; }
 
         private readonly string _taskName = $"Практическая работа 5. Работа с бинарным деревом поиска. Поиск в ширину и в глубину\t- задача 7";
         

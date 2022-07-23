@@ -8,7 +8,7 @@ namespace Algoritms
         /// <summary>
         /// Номер задачи
         /// </summary>
-        string TaskNumber { get; }
+        int TaskNumber { get; }
 
         /// <summary>
         /// Название задачи

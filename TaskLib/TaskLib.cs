@@ -5,7 +5,7 @@ namespace Algoritms
 {
     public abstract class BaseTask : ITask
     {
-        public abstract string TaskNumber { get; }
+        public abstract int TaskNumber { get; }
                 
         public abstract string TaskName { get; }
 
