@@ -7,9 +7,9 @@ namespace Algoritms
     [Task]
     class Task8 : BaseTask
     {
-        private readonly string _taskNumber = "8";
+        private readonly int _taskNumber = 8;
 
-        public override string TaskNumber { get => _taskNumber; }
+        public override int TaskNumber { get => _taskNumber; }
 
         private readonly string _taskName = $"Практическая работа 7. Работа с количеством вариантов\t\t\t\t\t- задача 8";
 
