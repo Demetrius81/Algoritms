@@ -7,30 +7,48 @@ using System.Threading.Tasks;
 namespace Algoritms.Sort;
 internal class HeapSort
 {
-    public static void Sort(int[] array) =>
-        Sort(array, array.Length, array.Length / 2);
-
-    private static void Sort(int[] array, int length, int root)
+    public void Sort(int[] array)
     {
-        int left = 2 * root + 1;
-        length = array.Length;
-        int right = 2 * root + 2;
-        int largest = root;
+        int count = array.Length;
 
-        if (left < length && array[left] > array[largest])
+        for (int i = count / 2 - 1; i >= 0; i--)
+        { 
+            Heapify(array, count, i); 
+        }
+
+        for (int i = count - 1; i >= 0; i--)
+        {
+            int temp = array[0];
+            array[0] = array[i];
+            array[i] = temp;
+            Heapify(array, i, 0);
+        }
+    }
+
+
+    private void Heapify(int[] array, int sizeHeap, int root)
+    {
+        int largest = root;
+        int left = 2 * root + 1;
+        int right = 2 * root + 2;
+
+        if (left < sizeHeap && array[left] > array[largest])
         {
             largest = left;
         }
 
-        if (right < length && array[right] > array[largest])
+        if (right < sizeHeap && array[right] > array[largest])
         {
             largest = right;
         }
 
         if (largest != root)
-        {            
-            (array[root], array[largest]) = (array[largest], array[root]);            
-            Sort(array, length, largest);
+        {
+            int swap = array[root];
+            array[root] = array[largest];
+            array[largest] = swap;
+            Heapify(array, sizeHeap, largest);
         }
-    }
+    }   
 }
+
