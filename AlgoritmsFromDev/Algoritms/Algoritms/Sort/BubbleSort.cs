@@ -1,31 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace Algoritms.Sort;
 
-namespace Algoritms.Sort
+internal class BubbleSort
 {
-    internal class BubbleSort
+    protected BubbleSort() { }
+
+    public static void Sort(int[] array)
     {
-        protected BubbleSort() { }
+        bool needSort;
 
-        public static void Sort(int[] array)
+        do
         {
-            bool needSort;
+            needSort = false;
 
-            do
+            for (int i = 1; i < array.Length; i++)
             {
-                needSort = false;
-
-                for (int i = 1; i < array.Length; i++)
+                if (array[i - 1] > array[i])
                 {
-                    if (array[i - 1] > array[i])
-                    {
-                        (array[i - 1], array[i]) = (array[i], array[i - 1]);
-                        needSort = true;
-                    }
+                    (array[i - 1], array[i]) = (array[i], array[i - 1]);
+                    needSort = true;
                 }
+            }
 
-            } while (needSort);
-        }
+        } while (needSort);
     }
 }
