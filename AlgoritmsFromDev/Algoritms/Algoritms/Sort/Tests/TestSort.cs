@@ -10,7 +10,7 @@ internal class TestSort
 {
     protected TestSort() { }
 
-    internal static (double timeBubbleSort, double timeDirectSort, double timeQuickSort) TestsSort()
+    internal static (double timeBubbleSort, double timeDirectSort, double timeQuickSort, double timeInsertionSort, double timeHeapSort) TestsSort()
     {
         Random rnd = new Random();
         var arr = new int[10000];
@@ -22,6 +22,8 @@ internal class TestSort
 
         var arr2 = (int[])arr.Clone();
         var arr3 = (int[])arr.Clone();
+        var arr4 = (int[])arr.Clone();
+        var arr5 = (int[])arr.Clone();
 
         Stopwatch stopwatch = new Stopwatch();
 
@@ -43,6 +45,18 @@ internal class TestSort
 
         var time3 = stopwatch.ElapsedTicks;
 
-        return (time1, time2, time3);
+        stopwatch.Restart();
+        InsertionSort.Sort(arr4);
+        stopwatch.Stop();
+
+        var time4 = stopwatch.ElapsedTicks;
+
+        stopwatch.Restart();
+        HeapSort.Sort(arr5);
+        stopwatch.Stop();
+
+        var time5 = stopwatch.ElapsedTicks;
+
+        return (time1, time2, time3, time4, time5);
     }
 }
