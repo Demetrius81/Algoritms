@@ -1,10 +1,14 @@
 ﻿using System.Diagnostics;
 
 namespace Algoritms.Sort.Tests;
+
+/// <summary>Класс измерения скорости сортировки на одинаковых массиввах одинаковой длины</summary>
 internal class TestSort
 {
     protected TestSort() { }
 
+    /// <summary>Метод измеряет скорость работы алгоритмов сортировки</summary>
+    /// <returns>кортеж результатов замера времени сортировки, значения - double</returns>
     internal static (double timeBubbleSort, double timeDirectSort, double timeQuickSort, double timeInsertionSort, double timeHeapSort) TestsSort()
     {
         Random rnd = new Random();

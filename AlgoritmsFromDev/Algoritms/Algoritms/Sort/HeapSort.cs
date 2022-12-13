@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Algoritms.Sort;
 
-namespace Algoritms.Sort;
+/// <summary>Класс пирамидальной сортировки</summary>
 internal class HeapSort
 {
     protected HeapSort() { }
+
+    /// <summary>Метод запускает пирамидальную сортировку</summary>
+    /// <param name="array">ссылка на массив для сортировки</param>
     public static void Sort(int[] array)
     {
         int count = array.Length;
@@ -24,7 +23,10 @@ internal class HeapSort
         }
     }
 
-
+    /// <summary>Метод формирует дерево</summary>
+    /// <param name="array">ссылка на массив для сортировки</param>
+    /// <param name="sizeHeap">размер дерева</param>
+    /// <param name="root">корень дерева</param>
     private static void Heapify(int[] array, int sizeHeap, int root)
     {
         int largest = root;

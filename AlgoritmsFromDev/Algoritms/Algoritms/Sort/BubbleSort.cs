@@ -1,9 +1,12 @@
 ﻿namespace Algoritms.Sort;
 
+/// <summary>Класс пузырьковой сортировки</summary>
 internal class BubbleSort
 {
     protected BubbleSort() { }
 
+    /// <summary>Метод выполняет пузырьковую сортировку</summary>
+    /// <param name="array">ссылка на массив для сортировки</param>
     public static void Sort(int[] array)
     {
         bool needSort;

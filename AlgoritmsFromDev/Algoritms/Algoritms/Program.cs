@@ -9,11 +9,12 @@ internal class Program
     {
         var result = TestSort.TestsSort();
 
-        Console.WriteLine($"Время сортировки 10 000 элементов алгоритмом пузырьковой сортировки :\t{result.timeBubbleSort / 100} микросекунд");
-        Console.WriteLine($"Время сортировки 10 000 элементов алгоритмом прямой сортировки :\t{result.timeDirectSort / 100} микросекунд");
-        Console.WriteLine($"Время сортировки 10 000 элементов алгоритмом быстрой сортировки :\t{result.timeQuickSort / 100} микросекунд");
-        Console.WriteLine($"Время сортировки 10 000 элементов алгоритмом сортировки вставками :\t{result.timeInsertionSort / 100000} микросекунд");
-        Console.WriteLine($"Время сортировки 10 000 элементов алгоритмом пирамидальной сортировки :\t{result.timeHeapSort / 100000} микросекунд");
+        Console.WriteLine("Время сортировки 10 000 элементов алгоритмом:");
+        Console.WriteLine($"> > > пузырьковой сортировки :\t\t{result.timeBubbleSort / 10} микросекунд");
+        Console.WriteLine($"> > > сортировки вставками :\t\t{result.timeInsertionSort / 10} микросекунд");
+        Console.WriteLine($"> > > прямой сортировки :\t\t{result.timeDirectSort / 10} микросекунд");
+        Console.WriteLine($"> > > быстрой сортировки :\t\t{result.timeQuickSort / 10} микросекунд");
+        Console.WriteLine($"> > > пирамидальной сортировки :\t{result.timeHeapSort / 10} микросекунд");
 
         Console.ReadKey(true);
     }
