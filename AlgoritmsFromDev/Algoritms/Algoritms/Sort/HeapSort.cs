@@ -7,26 +7,25 @@ using System.Threading.Tasks;
 namespace Algoritms.Sort;
 internal class HeapSort
 {
-    public void Sort(int[] array)
+    protected HeapSort() { }
+    public static void Sort(int[] array)
     {
         int count = array.Length;
 
         for (int i = count / 2 - 1; i >= 0; i--)
-        { 
-            Heapify(array, count, i); 
+        {
+            Heapify(array, count, i);
         }
 
         for (int i = count - 1; i >= 0; i--)
         {
-            int temp = array[0];
-            array[0] = array[i];
-            array[i] = temp;
+            (array[0], array[i]) = (array[i], array[0]);
             Heapify(array, i, 0);
         }
     }
 
 
-    private void Heapify(int[] array, int sizeHeap, int root)
+    private static void Heapify(int[] array, int sizeHeap, int root)
     {
         int largest = root;
         int left = 2 * root + 1;
@@ -44,11 +43,9 @@ internal class HeapSort
 
         if (largest != root)
         {
-            int swap = array[root];
-            array[root] = array[largest];
-            array[largest] = swap;
+            (array[root], array[largest]) = (array[largest], array[root]);
             Heapify(array, sizeHeap, largest);
         }
-    }   
+    }
 }
 
