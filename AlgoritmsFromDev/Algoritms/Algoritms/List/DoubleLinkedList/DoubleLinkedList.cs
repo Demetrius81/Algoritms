@@ -1,5 +1,4 @@
-﻿
-namespace Algoritms.List.DoubleLinkedList;
+﻿namespace Algoritms.List.DoubleLinkedList;
 
 /// <summary>Двухсвязный список</summary>
 internal class DoubleLinkedList
@@ -42,6 +41,8 @@ internal class DoubleLinkedList
 
     #endregion
 
+    /// <summary>Метод добавляет в начало списка новый узел</summary>
+    /// <param name="value">значение узла</param>
     public void AddNodeFirst(int value)
     {
         Node newNode = new(value);
@@ -57,6 +58,7 @@ internal class DoubleLinkedList
         FirstNode = newNode;
     }
 
+    /// <summary>Метод удаляет первый элемент списка</summary>
     public void RemoveNodeFirst()
     {
         if (FirstNode is not null &&
@@ -72,6 +74,8 @@ internal class DoubleLinkedList
         }
     }
 
+    /// <summary>Метод добавляет элемент в конец списка</summary>
+    /// <param name="value">значение</param>
     public void AddNodeLast(int value)
     {
         Node? newNode = new(value);
@@ -87,6 +91,7 @@ internal class DoubleLinkedList
         LastNode = newNode;
     }
 
+    /// <summary>Метод удаляет последний элемент из списка</summary>
     public void RemoveNodeLast()
     {
         if (LastNode is not null &&
@@ -102,6 +107,7 @@ internal class DoubleLinkedList
         }
     }
 
+    /// <summary>Метод сортирует список</summary>
     public void SortList()
     {
         if (FirstNode is null)
@@ -148,6 +154,7 @@ internal class DoubleLinkedList
         while (needSort);
     }
 
+    /// <summary>Метод переворачивает список</summary>
     public void Revert()
     {
         Node? node = FirstNode;
