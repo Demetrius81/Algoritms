@@ -158,7 +158,22 @@ internal class DoubleLinkedList
         while (needSort);
     }
 
-    #region Advanced methods
+    public void Revert()
+    {
+        Node? node = FirstNode;
+
+        while (node != null)
+        {
+            (node.NextNode, node.PrevNode, node) = (node.PrevNode, node.NextNode, node.NextNode);
+
+        }
+
+        (FirstNode, LastNode) = (LastNode, FirstNode);
+    }
+
+
+
+    #region Other methods
 
     /// <summary>Возвращает количество элементов в списке</summary>
     /// <returns>int количество элементов списка</returns>
