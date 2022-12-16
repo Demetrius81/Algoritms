@@ -10,6 +10,11 @@ internal class DoubleLinkedList
 
     #region Constructors
 
+    public DoubleLinkedList()
+    {
+
+    }
+
     public DoubleLinkedList(Node node)
     {
         FirstNode = node;
@@ -26,17 +31,13 @@ internal class DoubleLinkedList
     public DoubleLinkedList(IEnumerable<Node> nodes)
     {
         foreach (var item in nodes)
-        {
             AddNode(item.Value);
-        }
     }
 
     public DoubleLinkedList(IEnumerable<int> values)
     {
         foreach (var item in values)
-        {
             AddNode(item);
-        }
     }
 
     #endregion
@@ -51,9 +52,7 @@ internal class DoubleLinkedList
             FirstNode.NextNode = newNode;
         }
         else
-        {
             LastNode = newNode;
-        }
 
         FirstNode = newNode;
     }
@@ -83,9 +82,8 @@ internal class DoubleLinkedList
             LastNode.NextNode = newNode;
         }
         else
-        {
             FirstNode = newNode;
-        }
+
         LastNode = newNode;
     }
 
@@ -132,22 +130,14 @@ internal class DoubleLinkedList
                     nextNode.PrevNode = beforeNode;
 
                     if (beforeNode != null)
-                    {
                         beforeNode.NextNode = nextNode;
-                    }
                     else
-                    {
                         FirstNode = nextNode;
-                    }
 
                     if (afterNode != null)
-                    {
                         afterNode.PrevNode = currentNode;
-                    }
                     else
-                    {
                         LastNode = currentNode;
-                    }
 
                     needSort = true;
                 }
@@ -163,10 +153,7 @@ internal class DoubleLinkedList
         Node? node = FirstNode;
 
         while (node != null)
-        {
             (node.NextNode, node.PrevNode, node) = (node.PrevNode, node.NextNode, node.NextNode);
-
-        }
 
         (FirstNode, LastNode) = (LastNode, FirstNode);
     }
@@ -328,9 +315,7 @@ internal class DoubleLinkedList
     public void PrintDoubleLinkedList()
     {
         if (FirstNode is null)
-        {
             Console.WriteLine("Список пуст");
-        }
         else
         {
             Node? currentNode = FirstNode;

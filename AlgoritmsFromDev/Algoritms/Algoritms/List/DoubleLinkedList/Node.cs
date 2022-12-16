@@ -1,6 +1,6 @@
 ﻿namespace Algoritms.List.DoubleLinkedList;
 
-/// <summary>Узел списка</summary>
+/// <summary>Модель узла списка</summary>
 internal class Node
 {
     /// <summary>Значениe</summary>
