@@ -66,9 +66,8 @@ internal class LinkedList
             Node currentNode = FirstNode;
 
             while (currentNode.NextNode is not null)
-            {
                 currentNode = currentNode.NextNode;
-            }
+
             currentNode.NextNode = newNode;
         }
     }
@@ -82,21 +81,35 @@ internal class LinkedList
             while (currentNode.NextNode is not null)
             {
                 if (currentNode.NextNode.NextNode is null)
-                {
                     currentNode.NextNode = null;
-                }
             }
             FirstNode = null;
         }
     }
 
+    public void Revert()
+    {
+        if (FirstNode is not null && FirstNode.NextNode is not null)
+            Revert(FirstNode, FirstNode.NextNode);
+    }
+
+    private void Revert(Node currentNode, Node nextNode)
+    {
+        if (nextNode.NextNode is not null)
+            Revert(nextNode, nextNode.NextNode);
+        else
+            FirstNode = nextNode;
+
+        nextNode.NextNode = currentNode;
+        currentNode.NextNode = null;
+    }
+
+
     /// <summary>Выводит в консоль список</summary>
     public void PrintLinkedList()
     {
         if (FirstNode is null)
-        {
             Console.WriteLine("Список пуст");
-        }
         else
         {
             Node currentNode = FirstNode;
