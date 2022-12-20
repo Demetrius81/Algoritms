@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Algoritms.RedBlackTree;
+﻿namespace Algoritms.RedBlackTree;
 
 internal class RedBlackTree<T> where T : IComparable<T>
 {

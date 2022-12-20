@@ -1,6 +1,6 @@
 ﻿namespace Algoritms.RedBlackTree;
 
-internal class Node<T>
+internal class Node<T> where T : IComparable<T>
 {    
     public T Value { get; set; }
     internal Color Color { get; set; }
