@@ -1,5 +1,7 @@
 ﻿namespace Algoritms.RedBlackTree;
 
+/// <summary>Класс узел красно-черного дерева</summary>
+/// <typeparam name="T">тип, реализующий интерфейс IComparable</typeparam>
 internal class Node<T> where T : IComparable<T>
 {    
     public T Value { get; set; }
@@ -9,6 +11,6 @@ internal class Node<T> where T : IComparable<T>
 
     public override string ToString()
     {
-        return $$"""Node{ value={{Value}}, color={{Color}}}""";
+        return $$"""Node{ "value" = "{{Value}}", "color" = "{{Color}}" }""";
     }
 }

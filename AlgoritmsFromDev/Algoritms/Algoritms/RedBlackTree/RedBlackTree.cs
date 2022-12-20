@@ -1,9 +1,14 @@
 ﻿namespace Algoritms.RedBlackTree;
 
+/// <summary>Класс красно-черного дерева</summary>
+/// <typeparam name="T">Тип, реализующий интерфейс IComparable</typeparam>
 internal class RedBlackTree<T> where T : IComparable<T>
 {
     private Node<T>? _root;
 
+    /// <summary>Добавить значение в дерево</summary>
+    /// <param name="value">значение</param>
+    /// <returns></returns>
     public bool Add(T value)
     {
         if (_root is not null)
@@ -22,6 +27,10 @@ internal class RedBlackTree<T> where T : IComparable<T>
         }
     }
 
+    /// <summary>Добавить значение в дерево. Рекурсивный метод</summary>
+    /// <param name="node">узел дерева для рекурсии</param>
+    /// <param name="value">значение</param>
+    /// <returns></returns>
     private bool AddNode(Node<T>? node, T value)
     {
         if (node.Value.CompareTo(value) == 0)
@@ -65,6 +74,9 @@ internal class RedBlackTree<T> where T : IComparable<T>
         }
     }
 
+    /// <summary>Метод ребалансировки дерева</summary>
+    /// <param name="node">узел</param>
+    /// <returns>узел</returns>
     private Node<T>? Rebalnce(Node<T>? node)
     {
         Node<T>? result = node;
@@ -73,6 +85,7 @@ internal class RedBlackTree<T> where T : IComparable<T>
         do
         {
             needRebalance = false;
+
             if (result.RightChild is not null && result.RightChild.Color == Color.RED &&
                     (result.LeftChild is null || result.LeftChild.Color == Color.BLACK))
             {
@@ -97,6 +110,9 @@ internal class RedBlackTree<T> where T : IComparable<T>
         return result;
     }
 
+    /// <summary>Правый малый поворот</summary>
+    /// <param name="node">узел</param>
+    /// <returns>узел</returns>
     private Node<T>? RightSwap(Node<T>? node)
     {
         Node<T>? rightChild = node.RightChild;
@@ -108,6 +124,9 @@ internal class RedBlackTree<T> where T : IComparable<T>
         return rightChild;
     }
 
+    /// <summary>Левый малый поворот</summary>
+    /// <param name="node">узел</param>
+    /// <returns>узел</returns>
     private Node<T>? LeftSwap(Node<T>? node)
     {
         Node<T>? leftChild = node.LeftChild;
@@ -119,6 +138,8 @@ internal class RedBlackTree<T> where T : IComparable<T>
         return leftChild;
     }
 
+    /// <summary>Смена цвета</summary>
+    /// <param name="node"></param>
     private void ColorSwap(Node<T>? node)
     {
         node.RightChild.Color = Color.BLACK;

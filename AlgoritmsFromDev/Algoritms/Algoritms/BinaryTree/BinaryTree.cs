@@ -1,8 +1,14 @@
 ﻿namespace Algoritms.BinaryTree;
+
+/// <summary>Бинарное дерево</summary>
+/// <typeparam name="TValue">класс, реализующий интерфейс IComparable</typeparam>
 public class BinaryTree<TValue> where TValue : IComparable<TValue>
 {
     private Node? Root { get; set; }
 
+    /// <summary>Метод определяет, находится ли значение в дереве или нет циклом</summary>
+    /// <param name="value">значение</param>
+    /// <returns>результат операции</returns>
     public bool ContainsCycle(TValue value)
     {
         var currentNode = Root;
@@ -21,6 +27,9 @@ public class BinaryTree<TValue> where TValue : IComparable<TValue>
         return false;
     }
 
+    /// <summary>Метод определяет, находится ли значение в дереве или нет рекурсией</summary>
+    /// <param name="value">значение</param>
+    /// <returns>результат операции</returns>
     public bool ContainsRecursive(TValue value)
     {
         if (Root is null)
@@ -42,6 +51,7 @@ public class BinaryTree<TValue> where TValue : IComparable<TValue>
         }
     }
 
+    /// <summary>Класс узла дерева</summary>
     internal sealed class Node
     {
         internal TValue? Value { get; set; }

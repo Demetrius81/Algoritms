@@ -1,11 +1,13 @@
 ﻿namespace Algoritms.HashTable;
 
+/// <summary>Класс хеш таблицы</summary>
+/// <typeparam name="TKey">ключ</typeparam>
+/// <typeparam name="TValue">значение</typeparam>
 public class HashTable<TKey, TValue>
 {
     private const int BASKET_COUNT = 16;
     private const int MULTIPLICATION_FACTOR = 2;
     private const double LOAD_FACTOR = 0.75;
-
 
     private int Size { get; set; }
 
@@ -20,8 +22,12 @@ public class HashTable<TKey, TValue>
         Baskets = new Basket[initSize];
     }
 
+    /// <summary>Вычисляем индекс позиции в массиве корзин</summary>
+    /// <param name="key">ключ</param>
+    /// <returns>индекс позиции в массиве</returns>
     private int CalculateBasketIndex(TKey key) => key.GetHashCode() % Baskets.Length;
 
+    /// <summary>Перерасчет размера массива корзин</summary>
     private void Recalculate()
     {
         var oldBaskets = Baskets;
@@ -38,12 +44,12 @@ public class HashTable<TKey, TValue>
                 Put(node.Value.Key, node.Value.Value);
                 node = node.NextNode;
             }
-
-            //oldBaskets[i] = null; // Why? GK destroy this object when we exit from this method.
         }
     }
 
-
+    /// <summary>Получить значение по ключу</summary>
+    /// <param name="key">ключ</param>
+    /// <returns>значение</returns>
     public TValue? Get(TKey key)
     {
         var index = CalculateBasketIndex(key);
@@ -55,6 +61,10 @@ public class HashTable<TKey, TValue>
         return default;
     }
 
+    /// <summary>Положить значение по ключу</summary>
+    /// <param name="key">ключ</param>
+    /// <param name="value">значение</param>
+    /// <returns>результат операции</returns>
     public bool Put(TKey key, TValue value)
     {
         if (Baskets.Length * LOAD_FACTOR < Size)
@@ -83,6 +93,9 @@ public class HashTable<TKey, TValue>
         return false;
     }
 
+    /// <summary>Удалить значение по ключу</summary>
+    /// <param name="key">ключ</param>
+    /// <returns>результат операции</returns>
     public bool Remove(TKey key)
     {
         var index = CalculateBasketIndex(key);
@@ -95,16 +108,21 @@ public class HashTable<TKey, TValue>
         return false;
     }
 
+    /// <summary>Класс сущности, хранит пару ключ-значение</summary>
     internal sealed class Entity
     {
         internal TKey? Key { get; set; }
         internal TValue? Value { get; set; }
     }
 
+    /// <summary>Класс корзины представляет собой односвязный список</summary>
     internal sealed class Basket
     {
         internal Node? FirstNode { get; set; }
 
+        /// <summary>Получить значение по ключу</summary>
+        /// <param name="key">ключ</param>
+        /// <returns>значение</returns>
         internal TValue? Get(TKey key)
         {
             var currentNode = FirstNode;
@@ -119,6 +137,9 @@ public class HashTable<TKey, TValue>
             return default;
         }
 
+        /// <summary>Удалить значение по ключу</summary>
+        /// <param name="key">ключ</param>
+        /// <returns>результат операции</returns>
         internal bool Remove(TKey key)
         {
             if (FirstNode is not null)
@@ -143,6 +164,9 @@ public class HashTable<TKey, TValue>
             return false;
         }
 
+        /// <summary>Добавить сущность</summary>
+        /// <param name="entity">сущность</param>
+        /// <returns>результат выполнения операции</returns>
         internal bool Add(Entity entity)
         {
             Node newNode = new()
@@ -175,6 +199,9 @@ public class HashTable<TKey, TValue>
             }
         }
 
+        /// <summary>
+        /// Класс узла щдносвязного списка
+        /// </summary>
         internal sealed class Node
         {
             internal Node? NextNode { get; set; }
